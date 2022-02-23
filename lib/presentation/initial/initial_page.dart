@@ -1,10 +1,5 @@
-import 'package:daily_scrum/core/common/constants/assets_constant.dart';
-import 'package:daily_scrum/core/common/constants/texts_constant.dart';
-import 'package:daily_scrum/core/common/theme/colors_theme.dart';
-import 'package:daily_scrum/core/common/theme/style_constants_theme.dart';
 import 'package:daily_scrum/domain/entities/daily_entity.dart';
 import 'package:daily_scrum/presentation/initial/initial_controller.dart';
-import 'package:daily_scrum/presentation/widgets/rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,9 +26,9 @@ class InitialPage extends GetView<InitialController> {
                 onTap: () {},
                 splashColor: Colors.grey,
                 child: ListTile(
-                  title: Text('Para fazer hoje: ' + daily.todoToday),
-                  subtitle: Text('Para fazer ontem: ' +
-                      daily.todoYesterday +
+                  title: Text('O que fez ontem: ' + daily.todoYesterday),
+                  subtitle: Text('Para fazer hoje: ' +
+                      daily.todoToday +
                       "\n" +
                       'Algum impedimento: ' +
                       daily.thereAnyImpediment),

@@ -4,7 +4,6 @@ class DailyEntity {
   final String todoToday;
   final String thereAnyImpediment;
   final String id;
-
   DailyEntity(
       {required this.createdAt,
       required this.todoYesterday,
