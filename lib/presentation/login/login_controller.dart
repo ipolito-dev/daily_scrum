@@ -1,3 +1,4 @@
+import 'package:daily_scrum/core/common/constants/app_pages_constant.dart';
 import 'package:daily_scrum/core/common/utils/snack_bars_util.dart';
 import 'package:daily_scrum/domain/entities/logged_user_entity.dart';
 import 'package:daily_scrum/domain/usecases/login_usecase.dart';
@@ -19,13 +20,9 @@ class LoginController extends GetxController {
   final _email = TextEditingController();
   final _password = TextEditingController();
 
-  get loggedUser => _loggedUser.value;
+  LoggedUserEntity? get loggedUser => _loggedUser.value;
   get email => _email;
   get password => _password;
-
-  set loggedUser(value) => _loggedUser.value = value;
-  set email(value) => _email.text = value;
-  set password(value) => _password.text = value;
 
   Future<void> login() async {
     final result = await usecase(
@@ -33,8 +30,13 @@ class LoginController extends GetxController {
     result.fold((l) {
       SnackBarsUtil.infoSnackbar(msg: l.message);
       buttonContinueLogin.stop();
-    }, (r) {
-      loggedUser = r;
+    }, (r) async {
+      buttonContinueLogin.stop();
+      await _doInitial(r);
     });
+  }
+
+  Future<void> _doInitial(LoggedUserEntity? loggedUser) async {
+    return Get.toNamed(AppPagesConstant.INITIAL_PAGE, arguments: loggedUser);
   }
 }
