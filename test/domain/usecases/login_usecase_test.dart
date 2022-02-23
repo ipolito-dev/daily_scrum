@@ -29,7 +29,7 @@ void main() {
 
     expect(result.isLeft(), true);
     final AuthError authError = (result.fold(id, id) as AuthError);
-    expect(authError.message, 'Params null');
+    expect(authError.message, 'Preencha todos os campos');
   });
   test('Should returned error when the e-mail is invalid', () async {
     final result = await usecase(
@@ -37,7 +37,7 @@ void main() {
 
     expect(result.isLeft(), true);
     final AuthError authError = (result.fold(id, id) as AuthError);
-    expect(authError.message, 'Email invalid');
+    expect(authError.message, 'E-mail inválido');
   });
   test('Should returned error when the e-mail is empty', () async {
     final result =
@@ -45,7 +45,7 @@ void main() {
 
     expect(result.isLeft(), true);
     final AuthError authError = (result.fold(id, id) as AuthError);
-    expect(authError.message, 'Email invalid');
+    expect(authError.message, 'E-mail inválido');
   });
   test('Should returned error when the password is empty', () async {
     final result = await usecase(
@@ -53,7 +53,7 @@ void main() {
 
     expect(result.isLeft(), true);
     final AuthError authError = (result.fold(id, id) as AuthError);
-    expect(authError.message, 'Password empty');
+    expect(authError.message, 'Preencha o campo de senha');
   });
   test('Should returned error when the repository fail', () async {
     when(() => repository.login(params))

@@ -9,6 +9,6 @@ class TextsConstant {
   static const String preenchaOsCamposAbaixoParaContinuar =
       'Preencha os campos abaixo para continuar';
   static const String continuar = 'Continuar';
-  static const String cnpjCpf = 'CNPJ/ CPF';
-  static const String  chaveDeAcesso = 'Chave de acesso';
+  static const String email = 'E-mail';
+  static const String  senha = 'Senha';
 }

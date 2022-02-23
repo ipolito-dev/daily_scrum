@@ -34,8 +34,10 @@ class LoginPage extends GetView<LoginController> {
                 child: Text(
                   TextsConstant.bemVindoAoDailyScrum,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline5!.merge(
-                      StyleConstantsTheme.textStyleBemVindoAoDailyScrum),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline5!
+                      .merge(StyleConstantsTheme.textStyleBemVindoAoDailyScrum),
                 ),
               ),
               Container(
@@ -52,22 +54,25 @@ class LoginPage extends GetView<LoginController> {
               Container(
                 padding: const EdgeInsets.only(top: 40.0),
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: const TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
+                child: TextField(
+                  obscureText: false,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: TextsConstant.cnpjCpf,
+                      labelText: TextsConstant.email,
                       prefixIcon: Icon(Icons.account_circle_outlined)),
+                  controller: controller.email,
                 ),
               ),
               Container(
                 padding: const EdgeInsets.only(top: 8.0),
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: const TextField(
+                child: TextField(
+                  controller: controller.password,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: TextsConstant.chaveDeAcesso,
+                      labelText: TextsConstant.senha,
                       prefixIcon: Icon(Icons.vpn_key_outlined)),
                 ),
               ),
@@ -81,10 +86,12 @@ class LoginPage extends GetView<LoginController> {
                       controller: controller.buttonContinueLogin,
                       child: const Text(
                         TextsConstant.continuar,
-                        style: TextStyle(
-                            color: ColorsTheme.secondaryColor),
+                        style: TextStyle(color: ColorsTheme.secondaryColor),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        print("clicado");
+                        controller.login();
+                      },
                     )),
               ),
             ],

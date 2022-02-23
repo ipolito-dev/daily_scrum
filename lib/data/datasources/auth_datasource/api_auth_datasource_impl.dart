@@ -19,7 +19,7 @@ class ApiAuthDatasourceImpl implements IAuthDatasource {
     if (response.statusCode == 200) {
       return LoggedUserModel.fromMap(response.data[0]);
     } else {
-      throw DatasourceError("");
+      throw DatasourceError("ApiAuthDatasourceImpl login error");
     }
   }
 }
