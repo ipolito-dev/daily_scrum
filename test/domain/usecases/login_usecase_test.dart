@@ -1,5 +1,5 @@
 import 'package:daily_scrum/domain/entities/logged_user_entity.dart';
-import 'package:daily_scrum/domain/errors/auth_exception.dart';
+import 'package:daily_scrum/domain/errors/failure_errors.dart';
 import 'package:daily_scrum/domain/repositories/remote/i_auth_remote_repository.dart';
 import 'package:daily_scrum/domain/usecases/login_usecase.dart';
 import 'package:dartz/dartz.dart';
@@ -28,40 +28,40 @@ void main() {
     final result = await usecase();
 
     expect(result.isLeft(), true);
-    final AuthException authException = (result.fold(id, id) as AuthException);
-    expect(authException.message, 'Params null');
+    final AuthError authError = (result.fold(id, id) as AuthError);
+    expect(authError.message, 'Params null');
   });
   test('Should returned error when the e-mail is invalid', () async {
     final result = await usecase(
         params: CredentialParams(email: 'ipolito@.com', password: '12345'));
 
     expect(result.isLeft(), true);
-    final AuthException authException = (result.fold(id, id) as AuthException);
-    expect(authException.message, 'Email invalid');
+    final AuthError authError = (result.fold(id, id) as AuthError);
+    expect(authError.message, 'Email invalid');
   });
   test('Should returned error when the e-mail is empty', () async {
     final result =
         await usecase(params: CredentialParams(email: '', password: '12345'));
 
     expect(result.isLeft(), true);
-    final AuthException authException = (result.fold(id, id) as AuthException);
-    expect(authException.message, 'Email invalid');
+    final AuthError authError = (result.fold(id, id) as AuthError);
+    expect(authError.message, 'Email invalid');
   });
   test('Should returned error when the password is empty', () async {
     final result = await usecase(
         params: CredentialParams(email: 'ipolito@gmail.com', password: ''));
 
     expect(result.isLeft(), true);
-    final AuthException authException = (result.fold(id, id) as AuthException);
-    expect(authException.message, 'Password empty');
+    final AuthError authError = (result.fold(id, id) as AuthError);
+    expect(authError.message, 'Password empty');
   });
   test('Should returned error when the repository fail', () async {
     when(() => repository.login(params))
-        .thenAnswer((_) async => Left(AuthException("Erro repository")));
+        .thenAnswer((_) async => Left(AuthError("Erro repository")));
     final result = await usecase(params: params);
-    
+
     expect(result.isLeft(), true);
-    final AuthException authException = (result.fold(id, id) as AuthException);
-    expect(authException.message, 'Erro repository');
+    final AuthError authError = (result.fold(id, id) as AuthError);
+    expect(authError.message, 'Erro repository');
   });
 }
