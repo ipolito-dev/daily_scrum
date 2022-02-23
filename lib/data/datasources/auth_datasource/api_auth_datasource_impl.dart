@@ -13,8 +13,7 @@ class ApiAuthDatasourceImpl implements IAuthDatasource {
   Future<LoggedUserModel> login(CredentialParams params) async {
     final body = {
       'email': params.email,
-      // 'password': params.password,
-    };
+    }; 
     var response = await restClient.get('/login', queryParameters: body);
     if (response.statusCode == 200 && response.data.isEmpty) {
       throw DatasourceError("Email não encontrado");
