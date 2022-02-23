@@ -29,7 +29,7 @@ void main() {
 
     expect(result.isLeft(), true);
     final AuthError authError = (result.fold(id, id) as AuthError);
-    expect(authError.message, 'Preencha todos os campos');
+    expect(authError.message, 'Credenciais vazias');
   });
   test('Should returned error when the e-mail is invalid', () async {
     final result = await usecase(
@@ -45,7 +45,7 @@ void main() {
 
     expect(result.isLeft(), true);
     final AuthError authError = (result.fold(id, id) as AuthError);
-    expect(authError.message, 'E-mail inválido');
+    expect(authError.message, 'Preencha o campo de email');
   });
   test('Should returned error when the password is empty', () async {
     final result = await usecase(

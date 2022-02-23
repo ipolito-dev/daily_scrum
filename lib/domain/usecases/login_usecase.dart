@@ -16,12 +16,12 @@ class LoginUsecase
       {CredentialParams? params}) async {
     if (params == null) {
       return Left(AuthError("Credenciais vazias"));
-    } else if (params.email.isEmpty || params.password.isEmpty) {
-      return Left(AuthError("Preencha todos os campos"));
-    } else if (!Validations.isEmail(email: params.email)) {
-      return Left(AuthError("E-mail inválido"));
+    } else if (params.email.isEmpty) {
+      return Left(AuthError("Preencha o campo de email"));
     } else if (params.password.isEmpty) {
       return Left(AuthError("Preencha o campo de senha"));
+    } else if (!Validations.isEmail(email: params.email)) {
+      return Left(AuthError("E-mail inválido"));
     }
     return repository.login(params);
   }
