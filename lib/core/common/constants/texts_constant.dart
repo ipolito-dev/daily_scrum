@@ -11,4 +11,8 @@ class TextsConstant {
   static const String continuar = 'Continuar';
   static const String email = 'E-mail';
   static const String  senha = 'Senha';
+
+  static const String cancelar ='Cancelar';
+  static const String confirmar ='Confirmar';
+
 }

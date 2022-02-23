@@ -9,7 +9,7 @@ enum LoadingState { idle, loading, success, error }
 /// Initalize class
 class RoundedLoadingButton extends StatefulWidget {
   /// Button controller, now required
-  final RoundedLoadingButtonController controller;
+  final RoundedLoadingButtonController? controller;
 
   /// The callback that is called when
   /// the button is tapped or otherwise activated.
@@ -69,7 +69,7 @@ class RoundedLoadingButton extends StatefulWidget {
   /// initalize constructor
   const RoundedLoadingButton(
       {Key? key,
-      required this.controller,
+      this.controller,
       required this.onPressed,
       required this.child,
       this.color = Colors.lightBlue,
@@ -231,7 +231,7 @@ class RoundedLoadingButtonState extends State<RoundedLoadingButton>
       setState(() {});
     });
 
-    widget.controller._addListeners(_start, _stop, _success, _error, _reset);
+    widget.controller?._addListeners(_start, _stop, _success, _error, _reset);
   }
 
   @override

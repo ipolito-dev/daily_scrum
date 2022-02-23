@@ -15,6 +15,8 @@ class LoginUsecase
   Future<Either<FailureError, LoggedUserEntity>> call(
       {CredentialParams? params}) async {
     if (params == null) {
+      return Left(AuthError("Credenciais vazias"));
+    } else if (params.email.isEmpty || params.password.isEmpty) {
       return Left(AuthError("Preencha todos os campos"));
     } else if (!Validations.isEmail(email: params.email)) {
       return Left(AuthError("E-mail inválido"));
