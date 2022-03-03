@@ -15,9 +15,10 @@ class ApiAuthDatasourceImpl implements IAuthDatasource {
       'email': params.email,
     }; 
     var response = await restClient.get('/login', queryParameters: body);
-    if (response.statusCode == 200 && response.data.isEmpty) {
+    final statusCode = response.statusCode;
+    if (statusCode == 200 && response.data.isEmpty) {
       throw DatasourceError("Email não encontrado");
-    } else if (response.statusCode == 200) {
+    } else if (statusCode == 200) {
       return LoggedUserModel.fromMap(response.data[0]);
     } else {
       throw DatasourceError("ApiAuthDatasourceImpl login error");
