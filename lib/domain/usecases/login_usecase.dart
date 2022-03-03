@@ -18,10 +18,10 @@ class LoginUsecase
       return Left(AuthError("Credenciais vazias"));
     } else if (params.email.isEmpty) {
       return Left(AuthError("Preencha o campo de email"));
-    } else if (params.password.isEmpty) {
-      return Left(AuthError("Preencha o campo de senha"));
     } else if (!Validations.isEmail(email: params.email)) {
       return Left(AuthError("E-mail inválido"));
+    } else if (params.password.isEmpty) {
+      return Left(AuthError("Preencha o campo de senha"));
     }
     return repository.login(params);
   }
