@@ -5,4 +5,14 @@ abstract class HttpService {
     String path, {
     Map<String, dynamic>? queryParameters,
   });
+
+  Future<Response<T>> put<T>(
+    String path, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
+  });
 }
