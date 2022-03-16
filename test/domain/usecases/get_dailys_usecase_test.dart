@@ -1,11 +1,8 @@
 import 'package:daily_scrum/data/models/daily_model.dart';
 import 'package:daily_scrum/domain/entities/daily_entity.dart';
-import 'package:daily_scrum/domain/entities/logged_user_entity.dart';
 import 'package:daily_scrum/domain/errors/failure_errors.dart';
-import 'package:daily_scrum/domain/repositories/remote/i_auth_remote_repository.dart';
 import 'package:daily_scrum/domain/repositories/remote/i_daily_remote_repository.dart';
 import 'package:daily_scrum/domain/usecases/get_dailys_usecase.dart';
-import 'package:daily_scrum/domain/usecases/login_usecase.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

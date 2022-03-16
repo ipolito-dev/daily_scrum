@@ -89,7 +89,6 @@ class LoginPage extends GetView<LoginController> {
                         style: TextStyle(color: ColorsTheme.secondaryColor),
                       ),
                       onPressed: () {
-                        print("clicado");
                         controller.login();
                       },
                     )),
