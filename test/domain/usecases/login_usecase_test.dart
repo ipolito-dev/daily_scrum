@@ -37,7 +37,7 @@ void main() {
 
     expect(result.isLeft(), true);
     final AuthError authError = (result.fold(id, id) as AuthError);
-    expect(authError.message, 'E-mail inválido');
+    expect(authError.message, 'O e-mail não é válido');
   });
   test('Should returned error when the e-mail is empty', () async {
     final result =
