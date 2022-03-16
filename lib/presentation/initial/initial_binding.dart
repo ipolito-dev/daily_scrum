@@ -1,3 +1,4 @@
+import 'package:daily_scrum/core/services/http_service.dart';
 import 'package:daily_scrum/core/services/rest_client.dart';
 import 'package:daily_scrum/data/datasources/daily_datasource/api_daily_datasource_impl.dart';
 import 'package:daily_scrum/data/datasources/daily_datasource/i_daily_datasource.dart';
@@ -11,7 +12,7 @@ import 'initial_controller.dart';
 class InitialBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => RestClient());
+    Get.lazyPut<HttpService>(() => RestClient());
     Get.lazyPut<IDailyDatasource>(() => ApiDailyDatasourceImpl(Get.find()));
     Get.lazyPut<IDailyRemoteRepository>(() => DailyRepositoryImpl(Get.find()));
     Get.lazyPut(() => GetDailysUsecase(repository: Get.find()));
