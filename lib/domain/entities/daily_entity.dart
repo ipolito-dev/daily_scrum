@@ -1,8 +1,8 @@
 class DailyEntity {
   final String createdAt;
-  final String todoYesterday;
-  final String todoToday;
-  final String thereAnyImpediment;
+  String todoYesterday;
+  String todoToday;
+  String thereAnyImpediment;
   final String id;
   DailyEntity(
       {required this.createdAt,
@@ -10,4 +10,9 @@ class DailyEntity {
       required this.todoToday,
       required this.thereAnyImpediment,
       required this.id});
+
+  @override
+  String toString() {
+    return 'DailyEntity(createdAt: $createdAt, todoYesterday: $todoYesterday, todoToday: $todoToday, thereAnyImpediment: $thereAnyImpediment, id: $id)';
+  }
 }
