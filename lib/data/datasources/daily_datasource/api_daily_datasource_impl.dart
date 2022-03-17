@@ -18,7 +18,18 @@ class ApiDailyDatasourceImpl implements IDailyDatasource {
               .toList() ??
           [];
     } else {
-      throw DatasourceError("ApiDailyDatasourceImpl login error");
+      throw DatasourceError("ApiDailyDatasourceImpl getDailys error");
+    }
+  }
+
+  @override
+  Future<DailyModel> updateDaily(DailyModel daily) async {
+    final body = {...daily.toMap()};
+    var response = await _httpService.put('/dailys/${daily.id}', data: body);
+    if (response.statusCode == 200) {
+      return DailyModel.fromMap(response.data);
+    } else {
+      throw DatasourceError("ApiDailyDatasourceImpl update Daily error");
     }
   }
 }

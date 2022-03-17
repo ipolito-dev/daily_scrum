@@ -12,7 +12,7 @@ void main() {
   final datasource = DailyDatasourceMock();
   final repository = DailyRepositoryImpl(datasource);
 
-  test('Should retuned one List<DailyModel> ', () async {
+  test('Should returned one List<DailyModel> ', () async {
     when(() => datasource.getDailys()).thenAnswer((_) async => <DailyModel>[]);
 
     final result = await repository.getDailys();
@@ -21,10 +21,36 @@ void main() {
     expect((result.fold(id, id)), isA<List<DailyModel>>());
   });
 
-  test('Should retuned one erro if datasourcce fail', () async {
+  test('Should returned one erro if datasourcce fail', () async {
     when(() => datasource.getDailys()).thenThrow(Exception());
 
     final result = await repository.getDailys();
+
+    expect(result.isLeft(), true);
+    expect((result.fold(id, id)), isA<DatasourceError>());
+  });
+
+  final dailyModel = DailyModel(
+      createdAt: DateTime.now().toString(),
+      todoYesterday: "todoYesterday",
+      todoToday: "todoToday",
+      thereAnyImpediment: "thereAnyImpediment",
+      id: "1");
+  test('Should returned one DailyModel when update to occur', () async {
+    when(() => datasource.updateDaily(dailyModel))
+        .thenAnswer((_) async => dailyModel);
+
+    final result = await repository.updateDaily(dailyModel);
+
+    expect(result.isRight(), true);
+    expect((result.fold(id, id)), isA<DailyModel>());
+  });
+
+  test('Should returned one erro  in updateDaily when datasourcce fail',
+      () async {
+    when(() => datasource.updateDaily(dailyModel)).thenThrow(Exception());
+
+    final result = await repository.updateDaily(dailyModel);
 
     expect(result.isLeft(), true);
     expect((result.fold(id, id)), isA<DatasourceError>());
