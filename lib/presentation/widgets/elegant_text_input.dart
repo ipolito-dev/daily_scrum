@@ -65,7 +65,7 @@ class ElegantTextInputWidget extends StatelessWidget {
         Container(
           padding: padding,
           decoration: BoxDecoration(
-            color: backgroundColor ?? theme.colorScheme.secondaryVariant.withAlpha(100),
+            color: backgroundColor ?? theme.colorScheme.primaryVariant,
             borderRadius: BorderRadius.circular(10),
           ),
           child: TextFormField(

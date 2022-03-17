@@ -16,7 +16,8 @@ class UpdateDailyBottomSheetComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     final InitialController controller = Get.find<InitialController>();
     return Container(
-      decoration: const BoxDecoration(color: ColorsTheme.secondaryColor),
+      decoration:
+          BoxDecoration(color: Theme.of(context).colorScheme.background),
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -26,8 +27,8 @@ class UpdateDailyBottomSheetComponent extends StatelessWidget {
               padding: const EdgeInsets.only(top: 35, left: 16),
               child: Text(
                 title,
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
+                  color: Theme.of(context).textTheme.bodyText1!.color,
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                 ),
@@ -53,11 +54,11 @@ class UpdateDailyBottomSheetComponent extends StatelessWidget {
                   children: [
                     Expanded(
                       child: RoundedLoadingButton(
-                        color: ColorsTheme.primaryColor,
+                        color: Theme.of(context).colorScheme.primary,
                         animateOnTap: false,
                         child: const Text(
                           TextsConstant.cancelar,
-                          style: TextStyle(color: ColorsTheme.secondaryColor),
+                          style: TextStyle(color: ColorsTheme.textColorLigth),
                         ),
                         onPressed: () => Get.back(),
                       ),
@@ -67,10 +68,10 @@ class UpdateDailyBottomSheetComponent extends StatelessWidget {
                     ),
                     Expanded(
                       child: RoundedLoadingButton(
-                        color: ColorsTheme.primaryColor,
+                        color: Theme.of(context).colorScheme.primary,
                         child: const Text(
                           TextsConstant.confirmar,
-                          style: TextStyle(color: ColorsTheme.secondaryColor),
+                          style: TextStyle(color: ColorsTheme.textColorLigth),
                         ),
                         controller:
                             controller.roundedLoadingButtonControllerUpdate,

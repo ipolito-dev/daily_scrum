@@ -1,7 +1,8 @@
 import 'dart:core';
-import 'package:daily_scrum/core/common/theme/colors_theme.dart';
+
 import 'package:daily_scrum/core/common/theme/design_edges_theme.dart';
 import 'package:flutter/material.dart';
+
 import 'elegant_dropdown_item.dart';
 
 class ElegantDropdown<T> extends StatelessWidget {
@@ -44,9 +45,9 @@ class ElegantDropdown<T> extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(DesignEdgesTheme.bordersRadius),
-        color: ColorsTheme.primaryColor,
+        color: Theme.of(context).colorScheme.primary,
         border: Border.all(
-            color: ColorsTheme.primaryColor,
+            color: Theme.of(context).colorScheme.primary,
             width: DesignEdgesTheme.bordersWidth),
       ),
       child: Theme(
@@ -59,16 +60,17 @@ class ElegantDropdown<T> extends StatelessWidget {
               border: InputBorder.none, contentPadding: EdgeInsets.all(0)),
           hint: Text(
             hint!,
-            style: const TextStyle(
-              color: ColorsTheme.primaryColor,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
             ),
           ),
           value: list.isNotEmpty ? list[indexSelected].value : null,
           elevation: 16,
-          iconEnabledColor: ColorsTheme.primaryColor,
-          dropdownColor: ColorsTheme.primaryColor,
-          selectedItemBuilder: (context) => listItems(containsIconSize: false),
-          items: listItems(),
+          iconEnabledColor: Theme.of(context).colorScheme.primary,
+          dropdownColor: Theme.of(context).colorScheme.primary,
+          selectedItemBuilder: (context) =>
+              listItems(context, containsIconSize: false),
+          items: listItems(context),
           onChanged: onChange == null
               ? null
               : (v) {
@@ -79,7 +81,8 @@ class ElegantDropdown<T> extends StatelessWidget {
     );
   }
 
-  List<DropdownMenuItem<T>> listItems({bool containsIconSize = true}) =>
+  List<DropdownMenuItem<T>> listItems(BuildContext context,
+          {bool containsIconSize = true}) =>
       list.map((e) {
         return DropdownMenuItem(
           value: e.value,
@@ -95,8 +98,7 @@ class ElegantDropdown<T> extends StatelessWidget {
                 ),
               Text(
                 e.label,
-                style:
-                    const TextStyle(color: ColorsTheme.primaryColor),
+                style: TextStyle(color: Theme.of(context).colorScheme.primary),
               ),
             ],
           ),

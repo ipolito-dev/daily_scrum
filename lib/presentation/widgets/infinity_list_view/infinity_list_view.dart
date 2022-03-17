@@ -1,4 +1,3 @@
-import 'package:daily_scrum/core/common/theme/colors_theme.dart';
 import 'package:daily_scrum/presentation/widgets/infinity_list_view/infinity_list_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -27,17 +26,17 @@ class InfinityListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (onRefresh == null) {
-      return buildInfinityList();
+      return buildInfinityList(context);
     } else {
       return RefreshIndicator(
           onRefresh: () async {
             await onRefresh?.call();
           },
-          child: buildInfinityList());
+          child: buildInfinityList(context));
     }
   }
 
-  Container buildInfinityList() {
+  Container buildInfinityList(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(bottom: 0),
       height: (itemCount == 1 ? itemCount : itemCount - 1) * itemHeight + 200,
@@ -51,8 +50,8 @@ class InfinityListView extends StatelessWidget {
               ? Center(
                   child: Text(
                     emptyText,
-                    style: const TextStyle(
-                        color: ColorsTheme.primaryColor),
+                    style:
+                        TextStyle(color: Theme.of(context).colorScheme.primary),
                   ),
                 )
               : ListView.builder(
@@ -61,12 +60,12 @@ class InfinityListView extends StatelessWidget {
                   itemCount: itemCount,
                   itemBuilder: (context, index) {
                     if (controller.isAddLoadScroll(index, itemCount)) {
-                      return const Padding(
-                        padding: EdgeInsets.symmetric(
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
                             horizontal: 70, vertical: 70.0),
                         child: Center(
                           child: CircularProgressIndicator(
-                              color: ColorsTheme.primaryColor,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
                       );

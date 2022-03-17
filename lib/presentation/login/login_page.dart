@@ -26,7 +26,7 @@ class LoginPage extends GetView<LoginController> {
                 alignment: Alignment.center,
                 child: Image.asset(
                   AssetsConstant.imageDailyScrum,
-                  height: 50,
+                  height: 90,
                 ),
               ),
               Container(
@@ -58,7 +58,9 @@ class LoginPage extends GetView<LoginController> {
                   obscureText: false,
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                      ),
                       labelText: TextsConstant.email,
                       prefixIcon: Icon(Icons.account_circle_outlined)),
                   controller: controller.email,
@@ -71,7 +73,9 @@ class LoginPage extends GetView<LoginController> {
                   controller: controller.password,
                   obscureText: true,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                      ),
                       labelText: TextsConstant.senha,
                       prefixIcon: Icon(Icons.vpn_key_outlined)),
                 ),
@@ -82,11 +86,11 @@ class LoginPage extends GetView<LoginController> {
                 child: SizedBox(
                     width: double.maxFinite,
                     child: RoundedLoadingButton(
-                      color: ColorsTheme.primaryColor,
+                      color: Theme.of(context).colorScheme.secondary,
                       controller: controller.buttonContinueLogin,
                       child: const Text(
                         TextsConstant.continuar,
-                        style: TextStyle(color: ColorsTheme.secondaryColor),
+                        style: TextStyle(color: ColorsTheme.textColorLigth),
                       ),
                       onPressed: () {
                         controller.login();

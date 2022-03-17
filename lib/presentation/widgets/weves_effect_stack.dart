@@ -1,4 +1,3 @@
-import 'package:daily_scrum/core/common/theme/colors_theme.dart';
 import 'package:daily_scrum/core/common/theme/design_edges_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +28,7 @@ class WevesEffectsStack extends StatelessWidget {
               child: InkWell(
                 highlightColor: Colors.transparent,
                 splashColor:
-                    splashColor ?? ColorsTheme.primaryColor.withAlpha(55),
+                    splashColor ?? Theme.of(context).colorScheme.primary.withAlpha(55),
                 borderRadius: BorderRadius.circular(DesignEdgesTheme.bordersRadius),
                 onTap: () => onTap.call(),
               )),

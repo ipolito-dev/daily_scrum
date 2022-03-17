@@ -19,7 +19,6 @@ class InitialPage extends GetView<InitialController> {
               itemCount: controller.dailys.length,
               physics: const BouncingScrollPhysics(),
               padding: const EdgeInsets.symmetric(vertical: 8),
-              itemExtent: 150,
               itemBuilder: (context, index) {
                 final DailyEntity daily = controller.dailys[index];
                 return InitialListItemWidget(
