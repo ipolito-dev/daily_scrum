@@ -11,3 +11,7 @@ class AuthError extends FailureError {
 class DatasourceError extends FailureError {
   DatasourceError(String message) : super(message);
 }
+
+class InvalidValueError extends FailureError {
+  InvalidValueError(String message) : super(message);
+}

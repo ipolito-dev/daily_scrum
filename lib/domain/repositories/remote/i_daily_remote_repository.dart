@@ -4,4 +4,5 @@ import 'package:dartz/dartz.dart';
 
 abstract class IDailyRemoteRepository {
   Future<Either<FailureError, List<DailyEntity>>> getDailys();
+  Future<Either<FailureError, DailyEntity>> updateDaily(DailyEntity daily);
 }
