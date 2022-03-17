@@ -10,9 +10,8 @@ class ColorsTheme {
   static const Color buttonDisable = Color(0XFF7e7e7e);
   // static const Color background = Color(0XFFf9fbff);
 
-  static const Color textColorDark= Color(0XFFffffff);
-  static const Color textColorLigth  = Color(0XFF000000);
-
+  static const Color textColorDark = Color(0XFFffffff);
+  static const Color textColorLigth = Color(0XFF000000);
 
   static const Color colorLightGrey = Color(0xffDADADA);
   static const Color button = Color(0xffF8BC39);
@@ -26,5 +25,4 @@ class ColorsTheme {
   static const Color secondaryVariantColorDark = Color(0xffF8BC39);
 
   static const Color secondaryColor = Color(0xffF8BC39);
-
 }

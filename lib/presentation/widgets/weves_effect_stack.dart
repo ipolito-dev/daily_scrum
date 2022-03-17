@@ -24,12 +24,14 @@ class WevesEffectsStack extends StatelessWidget {
         Positioned.fill(
           child: Material(
               color: Colors.transparent,
-              borderRadius: BorderRadius.circular(DesignEdgesTheme.bordersRadius),
+              borderRadius:
+                  BorderRadius.circular(DesignEdgesTheme.bordersRadius),
               child: InkWell(
                 highlightColor: Colors.transparent,
-                splashColor:
-                    splashColor ?? Theme.of(context).colorScheme.primary.withAlpha(55),
-                borderRadius: BorderRadius.circular(DesignEdgesTheme.bordersRadius),
+                splashColor: splashColor ??
+                    Theme.of(context).colorScheme.primary.withAlpha(55),
+                borderRadius:
+                    BorderRadius.circular(DesignEdgesTheme.bordersRadius),
                 onTap: () => onTap.call(),
               )),
         )

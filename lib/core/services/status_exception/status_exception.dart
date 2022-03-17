@@ -1,5 +1,3 @@
-
-
 import 'package:daily_scrum/core/errors/client_string_code_errors.dart';
 import 'package:daily_scrum/core/services/rest_exception.dart';
 import 'package:daily_scrum/domain/errors/failure_errors.dart';

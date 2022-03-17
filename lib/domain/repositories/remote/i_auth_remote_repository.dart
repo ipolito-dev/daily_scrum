@@ -4,6 +4,5 @@ import 'package:daily_scrum/domain/usecases/login_usecase.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class IAuthRemoteRepository {
-  Future<Either<FailureError, LoggedUserEntity>> login(
-      CredentialParams params);
+  Future<Either<FailureError, LoggedUserEntity>> login(CredentialParams params);
 }
