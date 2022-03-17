@@ -5,6 +5,7 @@ import 'package:daily_scrum/data/datasources/daily_datasource/i_daily_datasource
 import 'package:daily_scrum/data/repositories/remote/daily_repository_impl.dart';
 import 'package:daily_scrum/domain/repositories/remote/i_daily_remote_repository.dart';
 import 'package:daily_scrum/domain/usecases/get_dailys_usecase.dart';
+import 'package:daily_scrum/domain/usecases/update_daily_usecase.dart';
 import 'package:get/get.dart';
 
 import 'initial_controller.dart';
@@ -16,6 +17,7 @@ class InitialBinding implements Bindings {
     Get.lazyPut<IDailyDatasource>(() => ApiDailyDatasourceImpl(Get.find()));
     Get.lazyPut<IDailyRemoteRepository>(() => DailyRepositoryImpl(Get.find()));
     Get.lazyPut(() => GetDailysUsecase(repository: Get.find()));
-    Get.put(InitialController(Get.find()));
+    Get.lazyPut(() => UpdateDailyUsecase(repository: Get.find()));
+    Get.put(InitialController(Get.find(), Get.find()));
   }
 }
