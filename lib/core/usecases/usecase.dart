@@ -1,9 +1,10 @@
+import 'package:daily_scrum/domain/errors/failure_errors.dart';
 import 'package:dartz/dartz.dart';
 
-abstract class UseCaseFuture<E extends Exception, T, P> {
-  Future<Either<E, T>> call({required P params});
+abstract class UseCaseFuture<Type, Params> {
+  Future<Either<FailureError, Type>> call({required Params params});
 }
 
-abstract class UseCaseSync<E extends Exception, T, P> {
-  Either<E, T> call({required P params});
+abstract class UseCaseSync<Type, Params> {
+  Either<FailureError, Type> call({required Params params});
 }

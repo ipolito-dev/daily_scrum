@@ -6,7 +6,7 @@ import 'package:daily_scrum/domain/repositories/remote/i_auth_remote_repository.
 import 'package:dartz/dartz.dart';
 
 class LoginUsecase
-    implements UseCaseFuture<FailureError, LoggedUserEntity, CredentialParams> {
+    implements UseCaseFuture<LoggedUserEntity, CredentialParams> {
   final IAuthRemoteRepository repository;
 
   LoginUsecase({required this.repository});

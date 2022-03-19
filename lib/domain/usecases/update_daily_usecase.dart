@@ -4,8 +4,7 @@ import 'package:daily_scrum/domain/errors/failure_errors.dart';
 import 'package:daily_scrum/domain/repositories/remote/i_daily_remote_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class UpdateDailyUsecase
-    implements UseCaseFuture<FailureError, DailyEntity, DailyEntity> {
+class UpdateDailyUsecase implements UseCaseFuture<DailyEntity, DailyEntity> {
   final IDailyRemoteRepository repository;
 
   UpdateDailyUsecase({required this.repository});
