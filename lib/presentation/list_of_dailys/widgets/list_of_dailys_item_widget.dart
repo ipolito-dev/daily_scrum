@@ -1,12 +1,12 @@
 import 'package:daily_scrum/presentation/widgets/weves_effect_stack.dart';
 import 'package:flutter/material.dart';
 
-class InitialListItemWidget extends StatelessWidget {
+class ListOfDailysItemWidget extends StatelessWidget {
   final String todoYesterday;
   final String todoToday;
   final String thereAnyImpediment;
   final void Function()? onTap;
-  const InitialListItemWidget({
+  const ListOfDailysItemWidget({
     Key? key,
     required this.todoYesterday,
     required this.todoToday,

@@ -6,7 +6,7 @@ import 'package:daily_scrum/data/repositories/remote/daily_repository_impl.dart'
 import 'package:daily_scrum/domain/repositories/remote/i_daily_remote_repository.dart';
 import 'package:daily_scrum/domain/usecases/get_dailys_usecase.dart';
 import 'package:daily_scrum/domain/usecases/update_daily_usecase.dart';
-import 'package:daily_scrum/presentation/initial/initial_getx/initial_controller_getx.dart';
+import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_getx/list_of_dailys_controller_getx.dart';
 import 'package:get/get.dart';
 
 class InitialBindingGetx extends Bindings {
@@ -17,6 +17,6 @@ class InitialBindingGetx extends Bindings {
     Get.lazyPut<IDailyRemoteRepository>(() => DailyRepositoryImpl(Get.find()));
     Get.lazyPut(() => GetDailysUsecase(repository: Get.find()));
     Get.lazyPut(() => UpdateDailyUsecase(repository: Get.find()));
-    Get.put(InitialControllerGetx(Get.find(), Get.find()));
+    Get.put(ListOfDailysControllerGetx(Get.find(), Get.find()));
   }
 }

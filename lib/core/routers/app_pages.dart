@@ -1,7 +1,7 @@
-import 'package:daily_scrum/presentation/initial/initial_bloc/initial_controller_bloc.dart';
-import 'package:daily_scrum/presentation/initial/initial_bloc/initial_page_bloc.dart';
-import 'package:daily_scrum/presentation/initial/initial_getx/initial_page_binding_getx.dart';
-import 'package:daily_scrum/presentation/initial/initial_getx/initial_page_getx.dart';
+import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_bloc/list_of_dailys_controller_bloc.dart';
+import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_bloc/list_of_dailys_page_bloc.dart';
+import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_getx/list_of_dailys_page_binding_getx.dart';
+import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_getx/list_of_dailys_page_getx.dart';
 import 'package:daily_scrum/presentation/login/login_controller.dart';
 import 'package:daily_scrum/presentation/login/login_page.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -17,15 +17,15 @@ class AppPages {
       ),
     ),
     GetPage(
-      name: InitialPageBloc.routeName,
-      page: () => InitialPageBloc(
-        controller: GetIt.I.get<InitialControllerBloc>(),
+      name: ListOfDailysPageBloc.routeName,
+      page: () => ListOfDailysPageBloc(
+        controller: GetIt.I.get<ListOfDailysControllerBloc>(),
       ),
     ),
     //====== Pages with injection of depences Getx ========
     GetPage(
-      name: InitialPageGetx.routeName,
-      page: () => const InitialPageGetx(),
+      name: ListOfDailysPageGetx.routeName,
+      page: () => const ListOfDailysPageGetx(),
       binding: InitialBindingGetx(),
     ),
   ];

@@ -1,6 +1,6 @@
 import 'package:daily_scrum/core/common/constants/texts_constant.dart';
 import 'package:daily_scrum/core/common/theme/colors_theme.dart';
-import 'package:daily_scrum/presentation/initial/i_initial_controller.dart';
+import 'package:daily_scrum/presentation/list_of_dailys/i_list_of_dailys_controller.dart';
 import 'package:daily_scrum/presentation/widgets/elegant_text_input.dart';
 import 'package:daily_scrum/presentation/widgets/rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 class UpdateDailyBottomSheetComponent extends StatelessWidget {
   final String title;
-  final IInitialController controller;
+  final IListOfDailysController controller;
   const UpdateDailyBottomSheetComponent(
       {Key? key, this.title = "Atualizar", required this.controller})
       : super(key: key);

@@ -11,7 +11,7 @@ import 'package:daily_scrum/domain/repositories/remote/i_daily_remote_repository
 import 'package:daily_scrum/domain/usecases/get_dailys_usecase.dart';
 import 'package:daily_scrum/domain/usecases/login_usecase.dart';
 import 'package:daily_scrum/domain/usecases/update_daily_usecase.dart';
-import 'package:daily_scrum/presentation/initial/initial_bloc/initial_controller_bloc.dart';
+import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_bloc/list_of_dailys_controller_bloc.dart';
 import 'package:daily_scrum/presentation/login/login_controller.dart';
 import 'package:get_it/get_it.dart';
 
@@ -48,6 +48,6 @@ class Inject {
     getIt.registerLazySingleton<UpdateDailyUsecase>(
         () => UpdateDailyUsecase(repository: getIt()));
     //controllers
-    getIt.registerFactory(() => InitialControllerBloc(getIt(), getIt()));
+    getIt.registerFactory(() => ListOfDailysControllerBloc(getIt(), getIt()));
   }
 }

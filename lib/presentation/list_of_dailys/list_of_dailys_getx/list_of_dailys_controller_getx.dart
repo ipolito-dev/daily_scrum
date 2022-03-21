@@ -4,15 +4,15 @@ import 'package:daily_scrum/core/common/utils/snack_bars_util.dart';
 import 'package:daily_scrum/domain/entities/daily_entity.dart';
 import 'package:daily_scrum/domain/usecases/get_dailys_usecase.dart';
 import 'package:daily_scrum/domain/usecases/update_daily_usecase.dart';
-import 'package:daily_scrum/presentation/initial/components/update_daily_bottom_sheet_component.dart';
-import 'package:daily_scrum/presentation/initial/i_initial_controller.dart';
+import 'package:daily_scrum/presentation/list_of_dailys/components/update_daily_bottom_sheet_component.dart';
+import 'package:daily_scrum/presentation/list_of_dailys/i_list_of_dailys_controller.dart';
 import 'package:daily_scrum/presentation/widgets/elegant_modal_bottom_sheet_widget.dart';
 import 'package:daily_scrum/presentation/widgets/rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class InitialControllerGetx extends GetxController
-    implements IInitialController {
+class ListOfDailysControllerGetx extends GetxController
+    implements IListOfDailysController {
   final GetDailysUsecase _getDailysUsecase;
   final UpdateDailyUsecase _updateDailyUsecase;
 
@@ -25,7 +25,7 @@ class InitialControllerGetx extends GetxController
   @override
   final roundedLoadingButtonControllerUpdate = RoundedLoadingButtonController();
 
-  InitialControllerGetx(this._getDailysUsecase, this._updateDailyUsecase);
+  ListOfDailysControllerGetx(this._getDailysUsecase, this._updateDailyUsecase);
 
   final _dailys = <DailyEntity>[].obs;
 
