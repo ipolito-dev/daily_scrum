@@ -1,21 +1,32 @@
-import 'package:daily_scrum/core/common/constants/app_pages_constant.dart';
-import 'package:daily_scrum/presentation/initial/initial_binding.dart';
-import 'package:daily_scrum/presentation/initial/initial_page.dart';
-import 'package:daily_scrum/presentation/login/login_binding.dart';
+import 'package:daily_scrum/presentation/initial/initial_bloc/initial_controller_bloc.dart';
+import 'package:daily_scrum/presentation/initial/initial_bloc/initial_page_bloc.dart';
+import 'package:daily_scrum/presentation/initial/initial_getx/initial_page_binding_getx.dart';
+import 'package:daily_scrum/presentation/initial/initial_getx/initial_page_getx.dart';
+import 'package:daily_scrum/presentation/login/login_controller.dart';
 import 'package:daily_scrum/presentation/login/login_page.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get_it/get_it.dart';
 
 class AppPages {
-  static final List<GetPage> pages = [
+  static final List<GetPage> routes = [
+    //====== Pages with injection of depences GetIt ========
     GetPage(
-      name: AppPagesConstant.INITIAL_PAGE,
-      page: () => const InitialPage(),
-      binding: InitialBinding(),
+      name: LoginPage.routeName,
+      page: () => LoginPage(
+        controller: GetIt.I.get<LoginController>(),
+      ),
     ),
     GetPage(
-      name: AppPagesConstant.LOGIN,
-      page: () => const LoginPage(),
-      binding: LoginBinding(),
+      name: InitialPageBloc.routeName,
+      page: () => InitialPageBloc(
+        controller: GetIt.I.get<InitialControllerBloc>(),
+      ),
+    ),
+    //====== Pages with injection of depences Getx ========
+    GetPage(
+      name: InitialPageGetx.routeName,
+      page: () => const InitialPageGetx(),
+      binding: InitialBindingGetx(),
     ),
   ];
 }

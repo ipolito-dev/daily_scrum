@@ -2,13 +2,15 @@ import 'package:daily_scrum/core/common/constants/assets_constant.dart';
 import 'package:daily_scrum/core/common/constants/texts_constant.dart';
 import 'package:daily_scrum/core/common/theme/colors_theme.dart';
 import 'package:daily_scrum/core/common/theme/style_constants_theme.dart';
+import 'package:daily_scrum/presentation/initial/initial_getx/initial_page_getx.dart';
 import 'package:daily_scrum/presentation/login/login_controller.dart';
 import 'package:daily_scrum/presentation/widgets/rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class LoginPage extends GetView<LoginController> {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  static const String routeName = '/login_page';
+  final LoginController controller;
+  const LoginPage({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -92,8 +94,13 @@ class LoginPage extends GetView<LoginController> {
                         TextsConstant.continuar,
                         style: TextStyle(color: ColorsTheme.textColorLigth),
                       ),
-                      onPressed: () {
-                        controller.login();
+                      onPressed: () async {
+                        final isSucess = await controller.login();
+                        if (isSucess) {
+                          Navigator.of(context)
+                              // .pushNamed(InitialPageBloc.routeName);
+                              .pushNamed(InitialPageGetx.routeName);
+                        }
                       },
                     )),
               ),

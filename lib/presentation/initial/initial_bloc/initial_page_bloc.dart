@@ -1,11 +1,16 @@
 import 'package:daily_scrum/domain/entities/daily_entity.dart';
-import 'package:daily_scrum/presentation/initial/initial_controller.dart';
-import 'package:daily_scrum/presentation/initial/widgets/initial_list_item_widget.dart';
+import 'package:daily_scrum/presentation/initial/initial_bloc/initial_controller_bloc.dart';
+import 'package:daily_scrum/presentation/initial/initial_bloc/widgets/initial_list_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class InitialPage extends GetView<InitialController> {
-  const InitialPage({Key? key}) : super(key: key);
+class InitialPageBloc extends StatelessWidget {
+  static const String routeName = '/inital_page_bloc';
+  final InitialControllerBloc controller;
+  const InitialPageBloc({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
