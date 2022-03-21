@@ -37,10 +37,10 @@ class UpdateDailyBottomSheetComponent extends StatelessWidget {
             ),
             buildPadding(
                 title: "O que foi feito ontem?",
-                controller: controller.todoToday),
+                controller: controller.todoYesterday),
             buildPadding(
                 title: "O que será feito hoje?",
-                controller: controller.todoYesterday),
+                controller: controller.todoToday),
             buildPadding(
                 title: "Algum impedimento?",
                 controller: controller.thereAnyImpediment),

@@ -43,9 +43,9 @@ class ListOfDailysItemWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               buildQuestion(context,
-                  title: "O que foi feito ontem?", answer: todoToday),
+                  title: "O que foi feito ontem?", answer: todoYesterday),
               buildQuestion(context,
-                  title: "O que será feito hoje?", answer: todoYesterday),
+                  title: "O que será feito hoje?", answer: todoToday),
               buildQuestion(context,
                   title: "Algum Impedimentos?", answer: thereAnyImpediment),
             ],

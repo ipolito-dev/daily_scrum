@@ -2,6 +2,7 @@ import 'package:daily_scrum/core/common/constants/assets_constant.dart';
 import 'package:daily_scrum/core/common/constants/texts_constant.dart';
 import 'package:daily_scrum/core/common/theme/colors_theme.dart';
 import 'package:daily_scrum/core/common/theme/style_constants_theme.dart';
+import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_bloc/list_of_dailys_page_bloc.dart';
 import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_getx/list_of_dailys_page_getx.dart';
 import 'package:daily_scrum/presentation/login/login_controller.dart';
 import 'package:daily_scrum/presentation/widgets/rounded_loading_button/rounded_loading_button.dart';
@@ -98,8 +99,8 @@ class LoginPage extends StatelessWidget {
                         final isSucess = await controller.login();
                         if (isSucess) {
                           Navigator.of(context)
-                              // .pushNamed(ListOfDailysPageBloc.routeName);
-                              .pushNamed(ListOfDailysPageGetx.routeName);
+                              .pushNamed(ListOfDailysPageBloc.routeName);
+                              // .pushNamed(ListOfDailysPageGetx.routeName);
                         }
                       },
                     )),
