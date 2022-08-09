@@ -6,6 +6,7 @@ abstract class ListOfDailysEvent extends Equatable {
 }
 
 class ListOfDailysFechtDailys extends ListOfDailysEvent {}
+
 class ListOfDailysUpdateDailys extends ListOfDailysEvent {}
 
 class ListOfDailysFechtDailysWithError extends ListOfDailysEvent {}

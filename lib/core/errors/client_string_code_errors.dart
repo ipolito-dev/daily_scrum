@@ -45,42 +45,44 @@ class ClientStringCodeErrors {
     required this.messageDefault,
   });
 
-  static ClientStringCodeErrors automaticMessages(
-      {required String messageToBeReplicated, required DioError dioError}) {
+  static ClientStringCodeErrors automaticMessages({
+    required String messageToBeReplicated,
+    required DioError dioError,
+  }) {
     String messageDefault = _getMessageDefault(dioError);
     return ClientStringCodeErrors(
-        code_204: "Nenhum(a) $messageToBeReplicated retornado do servidor.",
-        code_304: "Nenhum(a) $messageToBeReplicated modificado no servidor.",
-        code_400:
-            "O servidor não pode processar a solicitação de $messageToBeReplicated.",
-        code_401:
-            "Você está sem credênciais para o servidor lhe retornar o(a) $messageToBeReplicated.",
-        code_403: "O servidor recusou o pedido de $messageToBeReplicated.",
-        code_404: "O servidor não encontrou o(a) $messageToBeReplicated.",
-        code_405:
-            "O servidor rejeitou a solicitação de $messageToBeReplicated.",
-        code_406:
-            "O servidor é incapaz de produzir uma representação de $messageToBeReplicated.",
-        code_500:
-            "O servidor encontrou uma condição inesperada e não pode atender à solicitação de $messageToBeReplicated.",
-        messageDefault: messageDefault.trim().isNotEmpty
-            ? messageDefault
-            : "Menssagem de erro nula!");
+      code_204: 'Nenhum(a) $messageToBeReplicated retornado do servidor.',
+      code_304: 'Nenhum(a) $messageToBeReplicated modificado no servidor.',
+      code_400:
+          'O servidor não pode processar a solicitação de $messageToBeReplicated.',
+      code_401:
+          'Você está sem credênciais para o servidor lhe retornar o(a) $messageToBeReplicated.',
+      code_403: 'O servidor recusou o pedido de $messageToBeReplicated.',
+      code_404: 'O servidor não encontrou o(a) $messageToBeReplicated.',
+      code_405: 'O servidor rejeitou a solicitação de $messageToBeReplicated.',
+      code_406:
+          'O servidor é incapaz de produzir uma representação de $messageToBeReplicated.',
+      code_500:
+          'O servidor encontrou uma condição inesperada e não pode atender à solicitação de $messageToBeReplicated.',
+      messageDefault: messageDefault.trim().isNotEmpty
+          ? messageDefault
+          : 'Menssagem de erro nula!',
+    );
   }
 
   static String _getMessageDefault(DioError dioError) {
     final data = dioError.response?.data;
     if (data == null) {
-      return "A conexão demorou, verifique sua conexão com a internet!";
+      return 'A conexão demorou, verifique sua conexão com a internet!';
     }
-    String firstError = "";
-    if (data.runtimeType.toString() == "String") return "";
+    String firstError = '';
+    if (data.runtimeType.toString() == 'String') return '';
     if (data['errors'] != null) {
       Map erros = data['errors'] as Map;
       firstError = (erros.values.first?.isNotEmpty ?? false)
-          ? "\n${erros.values.first[0]}"
-          : "";
+          ? '\n${erros.values.first[0]}'
+          : '';
     }
-    return "${data['message'].toString()}$firstError";
+    return '${data['message'].toString()}$firstError';
   }
 }

@@ -4,6 +4,8 @@ import 'package:daily_scrum/presentation/widgets/rounded_loading_button/rounded_
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../list_of_dailys/list_of_dailys_bloc/list_of_dailys_page_bloc.dart';
+
 class LoginController {
   RoundedLoadingButtonController buttonContinueLogin =
       RoundedLoadingButtonController();
@@ -25,15 +27,22 @@ class LoginController {
   Future<bool> login() async {
     bool isSucess = false;
     final result = await usecase(
-        params: CredentialParams(email: email.text, password: password.text));
+        params: CredentialParams(email: email.text, password: password.text),);
     result.fold((l) {
       // SnackBarsUtil.infoSnackbar(msg: l.message);
-      debugPrint("messsage ${l.message}");
+      debugPrint('messsage ${l.message}');
       buttonContinueLogin.stop();
     }, (r) async {
       buttonContinueLogin.stop();
       isSucess = true;
-    });
+    },);
     return isSucess;
+  }
+
+  Future<void> onContinue(BuildContext context) async {
+    if (await login()) {
+      Navigator.of(context).pushNamed(ListOfDailysPageBloc.routeName);
+      // .pushNamed(ListOfDailysPageGetx.routeName);
+    }
   }
 }

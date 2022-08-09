@@ -1,3 +1,5 @@
+class FailureErrors {}
+
 class FailureError implements Exception {
   final String message;
 

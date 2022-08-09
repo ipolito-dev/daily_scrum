@@ -6,5 +6,5 @@ class ElegantDropdownItem<T> {
   final T value;
 
   ElegantDropdownItem(
-      {required this.label, this.iconChild, required this.value});
+      {required this.label, this.iconChild, required this.value,});
 }

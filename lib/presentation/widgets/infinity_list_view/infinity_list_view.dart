@@ -11,29 +11,26 @@ class InfinityListView extends StatelessWidget {
   final double itemHeight;
   final double? itemWidth;
 
-  const InfinityListView(
-      {Key? key,
-      required this.controller,
-      required this.itemBuilder,
-      required this.itemHeight,
-      this.itemCount = 0,
-      this.emptyText = 'Nenhum resultado encontrado.',
-      this.scrollDirection = Axis.vertical,
-      this.onRefresh,
-      this.itemWidth})
-      : super(key: key);
+  const InfinityListView({
+    Key? key,
+    required this.controller,
+    required this.itemBuilder,
+    required this.itemHeight,
+    this.itemCount = 0,
+    this.emptyText = 'Nenhum resultado encontrado.',
+    this.scrollDirection = Axis.vertical,
+    this.onRefresh,
+    this.itemWidth,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (onRefresh == null) {
-      return buildInfinityList(context);
-    } else {
-      return RefreshIndicator(
-          onRefresh: () async {
-            await onRefresh?.call();
-          },
-          child: buildInfinityList(context));
-    }
+    return onRefresh == null
+        ? buildInfinityList(context)
+        : RefreshIndicator(
+            onRefresh: () async => await onRefresh?.call(),
+            child: buildInfinityList(context),
+          );
   }
 
   Container buildInfinityList(BuildContext context) {
@@ -62,7 +59,9 @@ class InfinityListView extends StatelessWidget {
                     if (controller.isAddLoadScroll(index, itemCount)) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 70, vertical: 70.0),
+                          horizontal: 70,
+                          vertical: 70.0,
+                        ),
                         child: Center(
                           child: CircularProgressIndicator(
                             color: Theme.of(context).colorScheme.primary,

@@ -17,7 +17,7 @@ class ElegantDropdown<T> extends StatelessWidget {
     required this.list,
     required this.onChange,
     this.title,
-    this.hint = "",
+    this.hint = '',
   }) : super(key: key);
 
   @override
@@ -29,7 +29,7 @@ class ElegantDropdown<T> extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
-              title ?? "",
+              title ?? '',
               style: Theme.of(context).textTheme.headline6,
             ),
           ),
@@ -48,16 +48,16 @@ class ElegantDropdown<T> extends StatelessWidget {
         color: Theme.of(context).colorScheme.primary,
         border: Border.all(
             color: Theme.of(context).colorScheme.primary,
-            width: DesignEdgesTheme.bordersWidth),
+            width: DesignEdgesTheme.bordersWidth,),
       ),
       child: Theme(
         data: Theme.of(context).copyWith(
             buttonTheme: ButtonTheme.of(context).copyWith(
           alignedDropdown: true,
-        )),
+        ),),
         child: DropdownButtonFormField<T>(
           decoration: const InputDecoration(
-              border: InputBorder.none, contentPadding: EdgeInsets.all(0)),
+              border: InputBorder.none, contentPadding: EdgeInsets.all(0),),
           hint: Text(
             hint!,
             style: TextStyle(
@@ -82,7 +82,7 @@ class ElegantDropdown<T> extends StatelessWidget {
   }
 
   List<DropdownMenuItem<T>> listItems(BuildContext context,
-          {bool containsIconSize = true}) =>
+          {bool containsIconSize = true,}) =>
       list.map((e) {
         return DropdownMenuItem(
           value: e.value,
@@ -109,8 +109,8 @@ class ElegantDropdown<T> extends StatelessWidget {
     bool hasMap = false;
     if (initial is Map) {
       final map = (initial as Map).keys.first;
-      hasMap = map == "" || map == null;
+      hasMap = map == '' || map == null;
     }
-    return initial == null || initial == "" || hasMap;
+    return initial == null || initial == '' || hasMap;
   }
 }

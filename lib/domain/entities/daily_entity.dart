@@ -9,7 +9,7 @@ class DailyEntity {
       required this.todoYesterday,
       required this.todoToday,
       required this.thereAnyImpediment,
-      required this.id});
+      required this.id,});
 
   @override
   String toString() {

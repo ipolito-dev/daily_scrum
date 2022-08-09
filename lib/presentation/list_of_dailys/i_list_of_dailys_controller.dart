@@ -8,7 +8,7 @@ abstract class IListOfDailysController {
   final RoundedLoadingButtonController roundedLoadingButtonControllerUpdate;
 
   IListOfDailysController(this.todoToday, this.todoYesterday,
-      this.thereAnyImpediment, this.roundedLoadingButtonControllerUpdate);
+      this.thereAnyImpediment, this.roundedLoadingButtonControllerUpdate,);
 
   Future<void> updateDaily();
 }

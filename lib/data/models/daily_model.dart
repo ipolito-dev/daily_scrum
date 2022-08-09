@@ -10,11 +10,12 @@ class DailyModel extends DailyEntity {
     required String thereAnyImpediment,
     required String id,
   }) : super(
-            createdAt: createdAt,
-            todoYesterday: todoYesterday,
-            todoToday: todoToday,
-            thereAnyImpediment: thereAnyImpediment,
-            id: id);
+          createdAt: createdAt,
+          todoYesterday: todoYesterday,
+          todoToday: todoToday,
+          thereAnyImpediment: thereAnyImpediment,
+          id: id,
+        );
 
   Map<String, dynamic> toMap() {
     return {

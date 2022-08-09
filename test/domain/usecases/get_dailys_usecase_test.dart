@@ -7,6 +7,9 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+class GetDailysUsecaseTest {
+  
+}
 class DailyRemoteRepositoryMock extends Mock implements IDailyRemoteRepository {
 }
 
@@ -17,11 +20,11 @@ void main() {
     when(() => repository.getDailys())
         .thenAnswer((_) async => Right(<DailyEntity>[
               DailyModel(
-                  createdAt: "createdAt",
-                  todoYesterday: "todoYesterday",
-                  todoToday: "todoToday",
-                  thereAnyImpediment: "thereAnyImpediment",
-                  id: "id")
+                  createdAt: 'createdAt',
+                  todoYesterday: 'todoYesterday',
+                  todoToday: 'todoToday',
+                  thereAnyImpediment: 'thereAnyImpediment',
+                  id: 'id',),
             ]));
 
     final result = await usecase();
@@ -36,7 +39,7 @@ void main() {
   
   test('Should returned error when the repository fail', () async {
     when(() => repository.getDailys())
-        .thenAnswer((_) async => Left(AuthError("Erro repository")));
+        .thenAnswer((_) async => Left(AuthError('Erro repository')));
     final result = await usecase();
 
     expect(result.isLeft(), true);

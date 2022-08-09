@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:daily_scrum/core/common/utils/snack_bars_util.dart';
 import 'package:daily_scrum/domain/entities/daily_entity.dart';
 import 'package:daily_scrum/domain/usecases/get_dailys_usecase.dart';
 import 'package:daily_scrum/domain/usecases/update_daily_usecase.dart';
@@ -90,32 +89,44 @@ class ListOfDailysControllerBloc
       _roundedLoadingButtonControllerUpdate;
 
   FutureOr<void> _onInit(
-      ListOfDailysFechtDailys event, Emitter<ListOfDailysState> emit) async {
+    ListOfDailysFechtDailys event,
+    Emitter<ListOfDailysState> emit,
+  ) async {
     emit(ListOfDailyLoadingState());
     await Future.delayed(const Duration(seconds: 2));
     final result = await _getDailysUsecase();
-    result.fold((l) {
-      emit(ListOfDailyErrorState(l.message));
-    }, (r) async {
-      _dailys = r;
-      emit(ListOfDailyLoadedState(r));
-    });
+    result.fold(
+      (l) {
+        emit(ListOfDailyErrorState(l.message));
+      },
+      (r) async {
+        _dailys = r;
+        emit(
+          ListOfDailyLoadedState(r),
+        );
+      },
+    );
   }
 
   FutureOr<void> _onUpdate(
-      ListOfDailysUpdateDailys event, Emitter<ListOfDailysState> emit) async {
+    ListOfDailysUpdateDailys event,
+    Emitter<ListOfDailysState> emit,
+  ) async {
     emit(ListOfDailyLoadingState());
     _updateCurrentDailyByTextEditingControllers();
     final result = await _updateDailyUsecase(params: _currentDaily);
-    result.fold((l) {
-      // SnackBarsUtil.infoSnackbar(msg: l.message);
-      // _roundedLoadingButtonControllerUpdate.stop();
-      emit(ListOfDailyErrorState(l.message));
-    }, (r) {
-      log(r.toString());
-      // _roundedLoadingButtonControllerUpdate.stop();
-      _updateOfDailyInListOfView(r);
-      emit(ListOfDailyUpdateState(r));
-    });
+    result.fold(
+      (l) {
+        // SnackBarsUtil.infoSnackbar(msg: l.message);
+        // _roundedLoadingButtonControllerUpdate.stop();
+        emit(ListOfDailyErrorState(l.message));
+      },
+      (r) {
+        log(r.toString());
+        // _roundedLoadingButtonControllerUpdate.stop();
+        _updateOfDailyInListOfView(r);
+        emit(ListOfDailyUpdateState(r));
+      },
+    );
   }
 }

@@ -23,7 +23,8 @@ class DailyRepositoryImpl implements IDailyRemoteRepository {
 
   @override
   Future<Either<FailureError, DailyEntity>> updateDaily(
-      DailyEntity dailyParam) async {
+    DailyEntity dailyParam,
+  ) async {
     try {
       final daily = await datasource.updateDaily(dailyParam as DailyModel);
       return Right(daily);

@@ -1,4 +1,4 @@
-const apiLoginResult = """ 
+const apiLoginResult = ''' 
 [
  {
   "name": "ipolito",
@@ -11,8 +11,8 @@ const apiLoginResult = """
   "id": "2"
  }
 ]
-""";
-const apiDailysResult = """ 
+''';
+const apiDailysResult = ''' 
 [
  {
   "createdAt": "2022-02-20T21:26:53.297Z",
@@ -29,4 +29,4 @@ const apiDailysResult = """
   "id": "2"
  }
 ]
-""";
+''';

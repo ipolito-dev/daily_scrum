@@ -38,12 +38,15 @@ class ListOfDailysControllerGetx extends GetxController
   @override
   Future<void> onInit() async {
     final result = await _getDailysUsecase();
-    result.fold((l) {
-      SnackBarsUtil.infoSnackbar(msg: l.message);
-    }, (r) async {
-      dailys = r;
-      debugPrint(dailys.toString());
-    });
+    result.fold(
+      (l) {
+        SnackBarsUtil.infoSnackbar(msg: l.message);
+      },
+      (r) async {
+        dailys = r;
+        debugPrint(dailys.toString());
+      },
+    );
     super.onInit();
   }
 
@@ -65,14 +68,17 @@ class ListOfDailysControllerGetx extends GetxController
   Future<void> updateDaily() async {
     _updateCurrentDailyByTextEditingControllers();
     final result = await _updateDailyUsecase(params: _currentDaily);
-    result.fold((l) {
-      SnackBarsUtil.infoSnackbar(msg: l.message);
-      roundedLoadingButtonControllerUpdate.stop();
-    }, (r) {
-      log(r.toString());
-      _updateOfDailyInListOfView(r);
-      roundedLoadingButtonControllerUpdate.stop();
-    });
+    result.fold(
+      (l) {
+        SnackBarsUtil.infoSnackbar(msg: l.message);
+        roundedLoadingButtonControllerUpdate.stop();
+      },
+      (r) {
+        log(r.toString());
+        _updateOfDailyInListOfView(r);
+        roundedLoadingButtonControllerUpdate.stop();
+      },
+    );
   }
 
   void _changeTextEditingControllersByDaily(DailyEntity daily) {

@@ -6,6 +6,9 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+class LoginUsecaseTest {
+  
+}
 class AuthRepositoryMock extends Mock implements IAuthRemoteRepository {}
 
 void main() {
@@ -15,7 +18,7 @@ void main() {
       CredentialParams(email: 'ipolito@gmail.com', password: '12345');
   test('Should do login when if e-mail is valid', () async {
     when(() => repository.login(params)).thenAnswer((_) async =>
-        Right(LoggedUserEntity(name: "ipolito", email: params.email)));
+        Right(LoggedUserEntity(name: 'ipolito', email: params.email)));
 
     final result = await usecase(params: params);
 
@@ -33,7 +36,7 @@ void main() {
   });
   test('Should returned error when the e-mail is invalid', () async {
     final result = await usecase(
-        params: CredentialParams(email: 'ipolito@.com', password: '12345'));
+        params: CredentialParams(email: 'ipolito@.com', password: '12345'),);
 
     expect(result.isLeft(), true);
     final AuthError authError = (result.fold(id, id) as AuthError);
@@ -49,7 +52,7 @@ void main() {
   });
   test('Should returned error when the password is empty', () async {
     final result = await usecase(
-        params: CredentialParams(email: 'ipolito@gmail.com', password: ''));
+        params: CredentialParams(email: 'ipolito@gmail.com', password: ''),);
 
     expect(result.isLeft(), true);
     final AuthError authError = (result.fold(id, id) as AuthError);
@@ -57,7 +60,7 @@ void main() {
   });
   test('Should returned error when the repository fail', () async {
     when(() => repository.login(params))
-        .thenAnswer((_) async => Left(AuthError("Erro repository")));
+        .thenAnswer((_) async => Left(AuthError('Erro repository')));
     final result = await usecase(params: params);
 
     expect(result.isLeft(), true);

@@ -10,7 +10,8 @@ class AuthRepositoryImpl implements IAuthRemoteRepository {
   AuthRepositoryImpl(this.datasource);
   @override
   Future<Either<FailureError, LoggedUserEntity>> login(
-      CredentialParams params) async {
+    CredentialParams params,
+  ) async {
     try {
       final user = await datasource.login(params);
       return Right(user);

@@ -25,28 +25,35 @@ class Inject {
     ///================= Login ==========================
     //datasources
     getIt.registerLazySingleton<IAuthDatasource>(
-        () => ApiAuthDatasourceImpl(getIt()));
+      () => ApiAuthDatasourceImpl(getIt()),
+    );
     //repositories
     getIt.registerLazySingleton<IAuthRemoteRepository>(
-        () => AuthRepositoryImpl(getIt()));
+      () => AuthRepositoryImpl(getIt()),
+    );
     //usecases
     getIt.registerLazySingleton<LoginUsecase>(
-        () => LoginUsecase(repository: getIt()));
+      () => LoginUsecase(repository: getIt()),
+    );
     //controllers
     getIt.registerFactory(() => LoginController(getIt()));
 
     ///================= InitialPageBLoc ==========================
     //datasources
     getIt.registerLazySingleton<IDailyDatasource>(
-        () => ApiDailyDatasourceImpl(getIt()));
+      () => ApiDailyDatasourceImpl(getIt()),
+    );
     //repositories
     getIt.registerLazySingleton<IDailyRemoteRepository>(
-        () => DailyRepositoryImpl(getIt()));
+      () => DailyRepositoryImpl(getIt()),
+    );
     //usecases
     getIt.registerLazySingleton<GetDailysUsecase>(
-        () => GetDailysUsecase(repository: getIt()));
+      () => GetDailysUsecase(repository: getIt()),
+    );
     getIt.registerLazySingleton<UpdateDailyUsecase>(
-        () => UpdateDailyUsecase(repository: getIt()));
+      () => UpdateDailyUsecase(repository: getIt()),
+    );
     //controllers
     getIt.registerFactory(() => ListOfDailysControllerBloc(getIt(), getIt()));
   }

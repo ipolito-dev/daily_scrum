@@ -86,7 +86,7 @@ class RoundedLoadingButton extends StatefulWidget {
       this.errorColor = Colors.red,
       this.successColor,
       this.disabledColor = ColorsTheme.buttonDisable,
-      this.disabled = false})
+      this.disabled = false,})
       : super(key: key);
 
   @override
@@ -108,7 +108,7 @@ class RoundedLoadingButtonState extends State<RoundedLoadingButton>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    var _check = Container(
+    var check = Container(
         alignment: FractionalOffset.center,
         decoration: BoxDecoration(
           color: widget.successColor ?? theme.primaryColor,
@@ -122,9 +122,9 @@ class RoundedLoadingButtonState extends State<RoundedLoadingButton>
                 Icons.check,
                 color: widget.valueColor,
               )
-            : null);
+            : null,);
 
-    var _cross = Container(
+    var cross = Container(
         alignment: FractionalOffset.center,
         decoration: BoxDecoration(
           color: widget.errorColor,
@@ -138,14 +138,14 @@ class RoundedLoadingButtonState extends State<RoundedLoadingButton>
                 Icons.close,
                 color: widget.valueColor,
               )
-            : null);
+            : null,);
 
-    var _loader = SizedBox(
+    var loader = SizedBox(
         height: widget.loaderSize,
         width: widget.loaderSize,
         child: CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color>(widget.valueColor),
-            strokeWidth: widget.loaderStrokeWidth));
+            strokeWidth: widget.loaderStrokeWidth,),);
 
     var childStream = StreamBuilder(
       stream: _state,
@@ -153,37 +153,40 @@ class RoundedLoadingButtonState extends State<RoundedLoadingButton>
         return AnimatedSwitcher(
             duration: const Duration(milliseconds: 200),
             child:
-                snapshot.data == LoadingState.loading ? _loader : widget.child);
+                snapshot.data == LoadingState.loading ? loader : widget.child,);
       },
     );
 
-    final _btn = ButtonTheme(
-        shape: RoundedRectangleBorder(borderRadius: _borderAnimation.value),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            onPrimary: widget.disabled ? widget.disabledColor : widget.color,
-            onSurface: widget.disabled ? widget.disabledColor : widget.color,
-            minimumSize: Size(_squeezeAnimation.value, widget.height),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(widget.borderRadius),
-            ),
-            primary: widget.disabled ? widget.disabledColor : widget.color,
-            elevation: widget.elevation,
-            padding: const EdgeInsets.all(0),
+    final btn = ButtonTheme(
+      shape: RoundedRectangleBorder(borderRadius: _borderAnimation.value),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          onPrimary: widget.disabled ? widget.disabledColor : widget.color,
+          onSurface: widget.disabled ? widget.disabledColor : widget.color,
+          minimumSize: Size(_squeezeAnimation.value, widget.height),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
-          onPressed: widget.disabled ? null : _btnPressed,
-          child: childStream,
-        ));
+          primary: widget.disabled ? widget.disabledColor : widget.color,
+          elevation: widget.elevation,
+          padding: const EdgeInsets.all(0),
+        ),
+        onPressed: widget.disabled ? null : _btnPressed,
+        child: childStream,
+      ),
+    );
 
     return Container(
-        decoration: const BoxDecoration(color: Colors.transparent),
-        height: widget.height,
-        child: Center(
-            child: _state.value == LoadingState.error
-                ? _cross
-                : _state.value == LoadingState.success
-                    ? _check
-                    : _btn));
+      decoration: const BoxDecoration(color: Colors.transparent),
+      height: widget.height,
+      child: Center(
+        child: _state.value == LoadingState.error
+            ? cross
+            : _state.value == LoadingState.success
+                ? check
+                : btn,
+      ),
+    );
   }
 
   @override
@@ -194,21 +197,21 @@ class RoundedLoadingButtonState extends State<RoundedLoadingButton>
         AnimationController(duration: widget.duration, vsync: this);
 
     _checkButtonController = AnimationController(
-        duration: const Duration(milliseconds: 1000), vsync: this);
+        duration: const Duration(milliseconds: 1000), vsync: this,);
 
     _borderController =
         AnimationController(duration: widget._borderDuration, vsync: this);
 
     _bounceAnimation = Tween<double>(begin: 0, end: widget.height).animate(
         CurvedAnimation(
-            parent: _checkButtonController, curve: Curves.elasticOut));
+            parent: _checkButtonController, curve: Curves.elasticOut,),);
     _bounceAnimation.addListener(() {
       setState(() {});
     });
 
     _squeezeAnimation = Tween<double>(begin: widget.width, end: widget.height)
         .animate(
-            CurvedAnimation(parent: _buttonController, curve: widget.curve));
+            CurvedAnimation(parent: _buttonController, curve: widget.curve),);
 
     _squeezeAnimation.addListener(() {
       setState(() {});
@@ -224,7 +227,7 @@ class RoundedLoadingButtonState extends State<RoundedLoadingButton>
 
     _borderAnimation = BorderRadiusTween(
             begin: BorderRadius.circular(widget.borderRadius),
-            end: BorderRadius.circular(widget.height))
+            end: BorderRadius.circular(widget.height),)
         .animate(_borderController);
 
     _borderAnimation.addListener(() {
@@ -297,7 +300,7 @@ class RoundedLoadingButtonController {
       VoidCallback stopListener,
       VoidCallback successListener,
       VoidCallback errorListener,
-      VoidCallback resetListener) {
+      VoidCallback resetListener,) {
     _startListener = startListener;
     _stopListener = stopListener;
     _successListener = successListener;

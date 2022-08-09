@@ -1,5 +1,4 @@
 import 'package:daily_scrum/core/common/theme/colors_theme.dart';
-import 'package:daily_scrum/core/common/utils/snack_bars_util.dart';
 import 'package:daily_scrum/domain/entities/daily_entity.dart';
 import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_bloc/list_of_dailys_controller_bloc.dart';
 import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_bloc/list_of_dailys_event.dart';
@@ -7,8 +6,6 @@ import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_bloc/list
 import 'package:daily_scrum/presentation/list_of_dailys/widgets/list_of_dailys_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
-import 'package:get_it/get_it.dart';
 
 class ListOfDailysPageBloc extends StatelessWidget {
   static const String routeName = '/list_of_dailys_page_bloc';
@@ -27,22 +24,23 @@ class ListOfDailysPageBloc extends StatelessWidget {
         body: Container(
           margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
           child: BlocBuilder<ListOfDailysControllerBloc, ListOfDailysState>(
-              bloc: controller..add(ListOfDailysFechtDailys()),
-              builder: (_, state) {
-                if (state is ListOfDailyLoadingState) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (state is ListOfDailyLoadedState) {
-                  return buildListView();
-                } else if (state is ListOfDailyUpdateState) {
-                  return buildListView();
-                } else if (state is ListOfDailyErrorState) {
-                  _showSnackBar(context, state.menssage);
-                  return buildListView();
-                }
-                return const SizedBox.shrink();
-              }),
+            bloc: controller..add(ListOfDailysFechtDailys()),
+            builder: (_, state) {
+              if (state is ListOfDailyLoadingState) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is ListOfDailyLoadedState) {
+                return buildListView();
+              } else if (state is ListOfDailyUpdateState) {
+                return buildListView();
+              } else if (state is ListOfDailyErrorState) {
+                _showSnackBar(context, state.menssage);
+                return buildListView();
+              }
+              return const SizedBox.shrink();
+            },
+          ),
         ),
       ),
     );
@@ -74,7 +72,7 @@ class ListOfDailysPageBloc extends StatelessWidget {
         onPressed: () {},
       ),
     );
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     });
   }

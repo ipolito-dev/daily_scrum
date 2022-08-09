@@ -32,7 +32,7 @@ class ElegantTextInputWidget extends StatelessWidget {
     this.maxLines = 1,
     this.maxLength,
     this.textInputType = TextInputType.text,
-    this.counterText = "",
+    this.counterText = '',
     this.obscureText = false,
     this.onChanged,
     this.textStyle = const TextStyle(color: Colors.grey),
@@ -56,7 +56,7 @@ class ElegantTextInputWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(bottom: 10.0),
             child: Text(
-              "$text",
+              '$text',
               textScaleFactor: 1.1,
               style: theme.textTheme.bodyText1,
             ),
@@ -65,13 +65,13 @@ class ElegantTextInputWidget extends StatelessWidget {
         Container(
           padding: padding,
           decoration: BoxDecoration(
-            color: backgroundColor ?? theme.colorScheme.primaryVariant,
+            color: backgroundColor ?? theme.colorScheme.primaryContainer,
             borderRadius: BorderRadius.circular(10),
           ),
           child: TextFormField(
             onTap: () {
               if (readOnly) {
-                SnackBars.warningSnackBar(msg: "Campo desabilitado!");
+                SnackBars.warningSnackBar(msg: 'Campo desabilitado!');
               }
             },
             controller: controller,
@@ -85,7 +85,7 @@ class ElegantTextInputWidget extends StatelessWidget {
             decoration: InputDecoration(
               hintText: text,
               hintStyle: TextStyle(
-                  color: theme.textTheme.bodyText1!.color!.withAlpha(170)),
+                  color: theme.textTheme.bodyText1!.color!.withAlpha(170),),
               errorText: errorText,
               border: InputBorder.none,
               counterText: counterText,

@@ -10,9 +10,11 @@ import 'package:get/get.dart';
 class UpdateDailyBottomSheetComponent extends StatelessWidget {
   final String title;
   final IListOfDailysController controller;
-  const UpdateDailyBottomSheetComponent(
-      {Key? key, this.title = "Atualizar", required this.controller})
-      : super(key: key);
+  const UpdateDailyBottomSheetComponent({
+    Key? key,
+    this.title = 'Atualizar',
+    required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,54 +38,64 @@ class UpdateDailyBottomSheetComponent extends StatelessWidget {
               ),
             ),
             buildPadding(
-                title: "O que foi feito ontem?",
-                controller: controller.todoYesterday),
+              title: 'O que foi feito ontem?',
+              controller: controller.todoYesterday,
+            ),
             buildPadding(
-                title: "O que será feito hoje?",
-                controller: controller.todoToday),
-            buildPadding(
-                title: "Algum impedimento?",
-                controller: controller.thereAnyImpediment),
+              title: 'O que será feito hoje?',
+              controller: controller.todoToday,
+            ),
             Padding(
               padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Expanded(
-                      child: RoundedLoadingButton(
-                        color: Theme.of(context).colorScheme.primary,
-                        animateOnTap: false,
-                        child: const Text(
-                          TextsConstant.cancelar,
-                          style: TextStyle(color: ColorsTheme.textColorLigth),
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              child: buildPadding(
+                title: 'Algum impedimento?',
+                controller: controller.thereAnyImpediment,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 8,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    child: RoundedLoadingButton(
+                      color: Theme.of(context).colorScheme.primary,
+                      animateOnTap: false,
+                      child: const Text(
+                        TextsConstant.cancelar,
+                        style: TextStyle(
+                          color: ColorsTheme.textColorLigth,
                         ),
-                        onPressed: () => Get.back(),
+                      ),
+                      onPressed: () => Get.back(),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: RoundedLoadingButton(
+                      color: Theme.of(context).colorScheme.primary,
+                      controller:
+                          controller.roundedLoadingButtonControllerUpdate,
+                      onPressed: () async {
+                        await controller.updateDaily();
+                        Navigator.pop(context);
+                      },
+                      child: const Text(
+                        TextsConstant.confirmar,
+                        style: TextStyle(
+                          color: ColorsTheme.textColorLigth,
+                        ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: RoundedLoadingButton(
-                        color: Theme.of(context).colorScheme.primary,
-                        child: const Text(
-                          TextsConstant.confirmar,
-                          style: TextStyle(color: ColorsTheme.textColorLigth),
-                        ),
-                        controller:
-                            controller.roundedLoadingButtonControllerUpdate,
-                        onPressed: () async {
-                          await controller.updateDaily();
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
@@ -93,7 +105,7 @@ class UpdateDailyBottomSheetComponent extends StatelessWidget {
   }
 
   Widget buildPadding(
-      {required String title, TextEditingController? controller}) {
+      {required String title, TextEditingController? controller,}) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 16,

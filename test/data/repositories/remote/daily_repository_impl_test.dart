@@ -6,6 +6,9 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+class DailyRepositoryImplTest {
+  
+}
 class DailyDatasourceMock extends Mock implements IDailyDatasource {}
 
 void main() {
@@ -32,10 +35,10 @@ void main() {
 
   final dailyModel = DailyModel(
       createdAt: DateTime.now().toString(),
-      todoYesterday: "todoYesterday",
-      todoToday: "todoToday",
-      thereAnyImpediment: "thereAnyImpediment",
-      id: "1");
+      todoYesterday: 'todoYesterday',
+      todoToday: 'todoToday',
+      thereAnyImpediment: 'thereAnyImpediment',
+      id: '1',);
   test('Should returned one DailyModel when update to occur', () async {
     when(() => datasource.updateDaily(dailyModel))
         .thenAnswer((_) async => dailyModel);
@@ -54,5 +57,5 @@ void main() {
 
     expect(result.isLeft(), true);
     expect((result.fold(id, id)), isA<DatasourceError>());
-  });
+  },);
 }

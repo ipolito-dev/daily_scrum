@@ -3,7 +3,6 @@ import 'package:daily_scrum/core/common/constants/texts_constant.dart';
 import 'package:daily_scrum/core/common/theme/colors_theme.dart';
 import 'package:daily_scrum/core/common/theme/style_constants_theme.dart';
 import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_bloc/list_of_dailys_page_bloc.dart';
-import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_getx/list_of_dailys_page_getx.dart';
 import 'package:daily_scrum/presentation/login/login_controller.dart';
 import 'package:daily_scrum/presentation/widgets/rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +50,7 @@ class LoginPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.subtitle2!.merge(
                       StyleConstantsTheme
-                          .textStylePreenchaOsCamposAbaixoParaContinuar),
+                          .textStylePreenchaOsCamposAbaixoParaContinuar,),
                 ),
               ),
               Container(
@@ -65,7 +64,7 @@ class LoginPage extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
                       labelText: TextsConstant.email,
-                      prefixIcon: Icon(Icons.account_circle_outlined)),
+                      prefixIcon: Icon(Icons.account_circle_outlined),),
                   controller: controller.email,
                 ),
               ),
@@ -80,30 +79,24 @@ class LoginPage extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
                       labelText: TextsConstant.senha,
-                      prefixIcon: Icon(Icons.vpn_key_outlined)),
+                      prefixIcon: Icon(Icons.vpn_key_outlined),),
                 ),
               ),
               Container(
                 padding: const EdgeInsets.only(top: 40.0),
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: SizedBox(
-                    width: double.maxFinite,
-                    child: RoundedLoadingButton(
-                      color: Theme.of(context).colorScheme.secondary,
-                      controller: controller.buttonContinueLogin,
-                      child: const Text(
-                        TextsConstant.continuar,
-                        style: TextStyle(color: ColorsTheme.textColorLigth),
-                      ),
-                      onPressed: () async {
-                        final isSucess = await controller.login();
-                        if (isSucess) {
-                          Navigator.of(context)
-                              .pushNamed(ListOfDailysPageBloc.routeName);
-                              // .pushNamed(ListOfDailysPageGetx.routeName);
-                        }
-                      },
-                    )),
+                  width: double.maxFinite,
+                  child: RoundedLoadingButton(
+                    color: Theme.of(context).colorScheme.secondary,
+                    controller: controller.buttonContinueLogin,
+                    child: const Text(
+                      TextsConstant.continuar,
+                      style: TextStyle(color: ColorsTheme.textColorLigth),
+                    ),
+                    onPressed: () async => await controller.onContinue(context),
+                  ),
+                ),
               ),
             ],
           ),

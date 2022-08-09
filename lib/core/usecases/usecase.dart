@@ -1,6 +1,8 @@
 import 'package:daily_scrum/domain/errors/failure_errors.dart';
 import 'package:dartz/dartz.dart';
 
+class Usecase {}
+
 abstract class UseCaseFuture<Type, Params> {
   Future<Either<FailureError, Type>> call({required Params params});
 }

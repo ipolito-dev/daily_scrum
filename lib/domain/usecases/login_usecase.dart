@@ -13,15 +13,15 @@ class LoginUsecase
 
   @override
   Future<Either<FailureError, LoggedUserEntity>> call(
-      {CredentialParams? params}) async {
+      {CredentialParams? params,}) async {
     if (params == null) {
-      return Left(AuthError("Credenciais vazias"));
+      return Left(AuthError('Credenciais vazias'));
     } else if (params.email.isEmpty) {
-      return Left(AuthError("Preencha o campo de email"));
+      return Left(AuthError('Preencha o campo de email'));
     } else if (!Validations.isEmail(email: params.email)) {
-      return Left(AuthError("O e-mail não é válido"));
+      return Left(AuthError('O e-mail não é válido'));
     } else if (params.password.isEmpty) {
-      return Left(AuthError("Preencha o campo de senha"));
+      return Left(AuthError('Preencha o campo de senha'));
     }
     return repository.login(params);
   }
