@@ -26,7 +26,7 @@ class AppPages {
     GetPage(
       name: ListOfDailysPageGetx.routeName,
       page: () => const ListOfDailysPageGetx(),
-      binding: InitialBindingGetx(),
+      binding: ListOfDailysPageBindingGetx(),
     ),
   ];
 }

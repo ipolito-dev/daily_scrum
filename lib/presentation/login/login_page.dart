@@ -1,8 +1,9 @@
+import 'dart:ffi';
+
 import 'package:daily_scrum/core/common/constants/assets_constant.dart';
 import 'package:daily_scrum/core/common/constants/texts_constant.dart';
 import 'package:daily_scrum/core/common/theme/colors_theme.dart';
 import 'package:daily_scrum/core/common/theme/style_constants_theme.dart';
-import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_bloc/list_of_dailys_page_bloc.dart';
 import 'package:daily_scrum/presentation/login/login_controller.dart';
 import 'package:daily_scrum/presentation/widgets/rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class LoginPage extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Image.asset(
                   AssetsConstant.imageDailyScrum,
-                  height: 90,
+                  height: 40,
                 ),
               ),
               Container(
@@ -49,8 +50,9 @@ class LoginPage extends StatelessWidget {
                   TextsConstant.preenchaOsCamposAbaixoParaContinuar,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.subtitle2!.merge(
-                      StyleConstantsTheme
-                          .textStylePreenchaOsCamposAbaixoParaContinuar,),
+                        StyleConstantsTheme
+                            .textStylePreenchaOsCamposAbaixoParaContinuar,
+                      ),
                 ),
               ),
               Container(
@@ -60,11 +62,12 @@ class LoginPage extends StatelessWidget {
                   obscureText: false,
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                      ),
-                      labelText: TextsConstant.email,
-                      prefixIcon: Icon(Icons.account_circle_outlined),),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                    ),
+                    labelText: TextsConstant.email,
+                    prefixIcon: Icon(Icons.account_circle_outlined),
+                  ),
                   controller: controller.email,
                 ),
               ),
@@ -75,11 +78,12 @@ class LoginPage extends StatelessWidget {
                   controller: controller.password,
                   obscureText: true,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                      ),
-                      labelText: TextsConstant.senha,
-                      prefixIcon: Icon(Icons.vpn_key_outlined),),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                    ),
+                    labelText: TextsConstant.senha,
+                    prefixIcon: Icon(Icons.vpn_key_outlined),
+                  ),
                 ),
               ),
               Container(

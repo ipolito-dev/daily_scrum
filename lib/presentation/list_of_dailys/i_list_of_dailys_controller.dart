@@ -7,8 +7,14 @@ abstract class IListOfDailysController {
   final TextEditingController thereAnyImpediment;
   final RoundedLoadingButtonController roundedLoadingButtonControllerUpdate;
 
-  IListOfDailysController(this.todoToday, this.todoYesterday,
-      this.thereAnyImpediment, this.roundedLoadingButtonControllerUpdate,);
+  IListOfDailysController(
+    this.todoToday,
+    this.todoYesterday,
+    this.thereAnyImpediment,
+    this.roundedLoadingButtonControllerUpdate,
+  );
 
   Future<void> updateDaily();
+
+  Future<void> onPressedConfirme(BuildContext context);
 }

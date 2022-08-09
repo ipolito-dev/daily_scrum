@@ -14,11 +14,11 @@ class LoginController {
 
   final LoginUsecase usecase;
 
-  LoginController(this.usecase);
-
   final _loggedUser = Rxn<LoggedUserEntity>();
   final _email = TextEditingController();
   final _password = TextEditingController();
+
+  LoginController(this.usecase);
 
   LoggedUserEntity? get loggedUser => _loggedUser.value;
   get email => _email;
@@ -27,15 +27,19 @@ class LoginController {
   Future<bool> login() async {
     bool isSucess = false;
     final result = await usecase(
-        params: CredentialParams(email: email.text, password: password.text),);
-    result.fold((l) {
-      // SnackBarsUtil.infoSnackbar(msg: l.message);
-      debugPrint('messsage ${l.message}');
-      buttonContinueLogin.stop();
-    }, (r) async {
-      buttonContinueLogin.stop();
-      isSucess = true;
-    },);
+      params: CredentialParams(email: email.text, password: password.text),
+    );
+    result.fold(
+      (l) {
+        // SnackBarsUtil.infoSnackbar(msg: l.message);
+        debugPrint('messsage ${l.message}');
+        buttonContinueLogin.stop();
+      },
+      (r) async {
+        buttonContinueLogin.stop();
+        isSucess = true;
+      },
+    );
     return isSucess;
   }
 

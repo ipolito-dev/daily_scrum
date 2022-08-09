@@ -9,7 +9,11 @@ class ModalBottomSheetWidget {
     return await showModalBottomSheet(
       isScrollControlled: isScrollController,
       backgroundColor: Theme.of(context).colorScheme.primary,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(15),
+        ),
+      ),
       context: context,
       builder: builder,
     );

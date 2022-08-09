@@ -9,7 +9,7 @@ import 'package:daily_scrum/domain/usecases/update_daily_usecase.dart';
 import 'package:daily_scrum/presentation/list_of_dailys/list_of_dailys_getx/list_of_dailys_controller_getx.dart';
 import 'package:get/get.dart';
 
-class InitialBindingGetx extends Bindings {
+class ListOfDailysPageBindingGetx extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<HttpService>(() => RestClient());

@@ -69,7 +69,10 @@ class ListOfDailysPageBloc extends StatelessWidget {
       backgroundColor: ColorsTheme.backgroundColorDark,
       action: SnackBarAction(
         label: 'Sair',
-        onPressed: () {},
+        onPressed: () {
+        ///TODO_update view
+
+        },
       ),
     );
     WidgetsBinding.instance.addPostFrameCallback((_) {

@@ -25,6 +25,8 @@ class ListOfDailysControllerBloc
   final _roundedLoadingButtonControllerUpdate =
       RoundedLoadingButtonController();
 
+  late DailyEntity _currentDaily;
+  late List<DailyEntity> _dailys;
   ListOfDailysControllerBloc(this._getDailysUsecase, this._updateDailyUsecase)
       : super(ListOfDailyLoadingState()) {
     on<ListOfDailysFechtDailys>(_onInit);
@@ -32,9 +34,6 @@ class ListOfDailysControllerBloc
     // on<ListOfDailysFechtDailysWithError>((event,emit)=>);
     // on<ListOfDailysFechtDailysEmpty>((event,emit)=>);
   }
-
-  late DailyEntity _currentDaily;
-  late List<DailyEntity> _dailys;
 
   get dailys => _dailys;
   set dailys(value) => _dailys = value;
@@ -128,5 +127,11 @@ class ListOfDailysControllerBloc
         emit(ListOfDailyUpdateState(r));
       },
     );
+  }
+
+  @override
+  Future<void> onPressedConfirme(BuildContext context) async {
+    await updateDaily();
+    Navigator.pop(context);
   }
 }

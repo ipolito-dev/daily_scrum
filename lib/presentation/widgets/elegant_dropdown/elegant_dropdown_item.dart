@@ -5,6 +5,9 @@ class ElegantDropdownItem<T> {
   final Widget? iconChild;
   final T value;
 
-  ElegantDropdownItem(
-      {required this.label, this.iconChild, required this.value,});
+  ElegantDropdownItem({
+    required this.label,
+    this.iconChild,
+    required this.value,
+  });
 }

@@ -66,14 +66,14 @@ class ElegantTextInputWidget extends StatelessWidget {
           padding: padding,
           decoration: BoxDecoration(
             color: backgroundColor ?? theme.colorScheme.primaryContainer,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(10),
+            ),
           ),
           child: TextFormField(
-            onTap: () {
-              if (readOnly) {
-                SnackBars.warningSnackBar(msg: 'Campo desabilitado!');
-              }
-            },
+            onTap: () => (readOnly)
+                ? SnackBars.warningSnackBar(msg: 'Campo desabilitado!')
+                : {},
             controller: controller,
             onChanged: onChanged,
             maxLines: maxLines,
@@ -85,7 +85,8 @@ class ElegantTextInputWidget extends StatelessWidget {
             decoration: InputDecoration(
               hintText: text,
               hintStyle: TextStyle(
-                  color: theme.textTheme.bodyText1!.color!.withAlpha(170),),
+                color: theme.textTheme.bodyText1!.color!.withAlpha(170),
+              ),
               errorText: errorText,
               border: InputBorder.none,
               counterText: counterText,

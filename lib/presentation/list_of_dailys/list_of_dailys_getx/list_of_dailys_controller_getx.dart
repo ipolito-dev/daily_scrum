@@ -13,9 +13,6 @@ import 'package:get/get.dart';
 
 class ListOfDailysControllerGetx extends GetxController
     implements IListOfDailysController {
-  final GetDailysUsecase _getDailysUsecase;
-  final UpdateDailyUsecase _updateDailyUsecase;
-
   @override
   final todoToday = TextEditingController();
   @override
@@ -25,7 +22,8 @@ class ListOfDailysControllerGetx extends GetxController
   @override
   final roundedLoadingButtonControllerUpdate = RoundedLoadingButtonController();
 
-  ListOfDailysControllerGetx(this._getDailysUsecase, this._updateDailyUsecase);
+  final GetDailysUsecase _getDailysUsecase;
+  final UpdateDailyUsecase _updateDailyUsecase;
 
   final _dailys = <DailyEntity>[].obs;
 
@@ -35,6 +33,7 @@ class ListOfDailysControllerGetx extends GetxController
 
   set dailys(List<DailyEntity> value) => _dailys.value = value;
 
+  ListOfDailysControllerGetx(this._getDailysUsecase, this._updateDailyUsecase);
   @override
   Future<void> onInit() async {
     final result = await _getDailysUsecase();
@@ -98,5 +97,11 @@ class ListOfDailysControllerGetx extends GetxController
     final indexOfDailyInList =
         dailys.indexWhere((element) => element.id == r.id);
     if (indexOfDailyInList != -1) _dailys[indexOfDailyInList] = r;
+  }
+
+  @override
+  Future<void> onPressedConfirme(BuildContext context) async {
+    await updateDaily();
+    Navigator.pop(context);
   }
 }

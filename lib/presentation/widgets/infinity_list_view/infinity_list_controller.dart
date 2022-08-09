@@ -2,14 +2,13 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class InfinityListController extends GetxController {
-  InfinityListController(this.maxItemsPage);
-
   final int maxItemsPage;
 
   final scrollController = ScrollController();
 
   final _loading = false.obs;
   final _currentPage = 0.obs;
+  InfinityListController(this.maxItemsPage);
 
   bool get loading => _loading.value;
 

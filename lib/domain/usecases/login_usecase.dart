@@ -12,8 +12,9 @@ class LoginUsecase
   LoginUsecase({required this.repository});
 
   @override
-  Future<Either<FailureError, LoggedUserEntity>> call(
-      {CredentialParams? params,}) async {
+  Future<Either<FailureError, LoggedUserEntity>> call({
+    CredentialParams? params,
+  }) async {
     if (params == null) {
       return Left(AuthError('Credenciais vazias'));
     } else if (params.email.isEmpty) {

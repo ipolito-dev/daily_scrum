@@ -7,7 +7,7 @@ abstract class HttpService {
   });
   Future<Response<T>> put<T>(
     String path, {
-    Map<String,dynamic> data,
+    Map<String, dynamic> data,
     Map<String, dynamic>? queryParameters,
     Options? options,
     // CancelToken? cancelToken,

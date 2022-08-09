@@ -29,7 +29,7 @@ class ListOfDailysItemWidget extends StatelessWidget {
             offset: Offset(0, 2),
           ),
         ],
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
       ),
       child: WevesEffectsStack(
         onTap: () => onTap?.call(),
@@ -38,20 +38,32 @@ class ListOfDailysItemWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            buildQuestion(context,
-                title: 'O que foi feito ontem?', answer: todoYesterday,),
-            buildQuestion(context,
-                title: 'O que será feito hoje?', answer: todoToday,),
-            buildQuestion(context,
-                title: 'Algum Impedimentos?', answer: thereAnyImpediment,),
+            buildQuestion(
+              context,
+              title: 'O que foi feito ontem?',
+              answer: todoYesterday,
+            ),
+            buildQuestion(
+              context,
+              title: 'O que será feito hoje?',
+              answer: todoToday,
+            ),
+            buildQuestion(
+              context,
+              title: 'Algum Impedimentos?',
+              answer: thereAnyImpediment,
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget buildQuestion(BuildContext context,
-      {required String title, required String answer,}) {
+  Widget buildQuestion(
+    BuildContext context, {
+    required String title,
+    required String answer,
+  }) {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0),
       child: Text.rich(

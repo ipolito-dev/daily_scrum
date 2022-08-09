@@ -44,20 +44,26 @@ class ElegantDropdown<T> extends StatelessWidget {
         : 0;
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(DesignEdgesTheme.bordersRadius),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(DesignEdgesTheme.bordersRadius),
+        ),
         color: Theme.of(context).colorScheme.primary,
         border: Border.all(
-            color: Theme.of(context).colorScheme.primary,
-            width: DesignEdgesTheme.bordersWidth,),
+          color: Theme.of(context).colorScheme.primary,
+          width: DesignEdgesTheme.bordersWidth,
+        ),
       ),
       child: Theme(
         data: Theme.of(context).copyWith(
-            buttonTheme: ButtonTheme.of(context).copyWith(
-          alignedDropdown: true,
-        ),),
+          buttonTheme: ButtonTheme.of(context).copyWith(
+            alignedDropdown: true,
+          ),
+        ),
         child: DropdownButtonFormField<T>(
           decoration: const InputDecoration(
-              border: InputBorder.none, contentPadding: EdgeInsets.all(0),),
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.all(0),
+          ),
           hint: Text(
             hint!,
             style: TextStyle(
@@ -81,8 +87,10 @@ class ElegantDropdown<T> extends StatelessWidget {
     );
   }
 
-  List<DropdownMenuItem<T>> listItems(BuildContext context,
-          {bool containsIconSize = true,}) =>
+  List<DropdownMenuItem<T>> listItems(
+    BuildContext context, {
+    bool containsIconSize = true,
+  }) =>
       list.map((e) {
         return DropdownMenuItem(
           value: e.value,

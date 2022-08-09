@@ -83,10 +83,8 @@ class UpdateDailyBottomSheetComponent extends StatelessWidget {
                       color: Theme.of(context).colorScheme.primary,
                       controller:
                           controller.roundedLoadingButtonControllerUpdate,
-                      onPressed: () async {
-                        await controller.updateDaily();
-                        Navigator.pop(context);
-                      },
+                      onPressed: () async =>
+                          controller.onPressedConfirme(context),
                       child: const Text(
                         TextsConstant.confirmar,
                         style: TextStyle(
@@ -104,8 +102,10 @@ class UpdateDailyBottomSheetComponent extends StatelessWidget {
     );
   }
 
-  Widget buildPadding(
-      {required String title, TextEditingController? controller,}) {
+  Widget buildPadding({
+    required String title,
+    TextEditingController? controller,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 16,

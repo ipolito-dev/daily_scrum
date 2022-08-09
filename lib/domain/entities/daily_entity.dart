@@ -4,12 +4,13 @@ class DailyEntity {
   String todoToday;
   String thereAnyImpediment;
   final String id;
-  DailyEntity(
-      {required this.createdAt,
-      required this.todoYesterday,
-      required this.todoToday,
-      required this.thereAnyImpediment,
-      required this.id,});
+  DailyEntity({
+    required this.createdAt,
+    required this.todoYesterday,
+    required this.todoToday,
+    required this.thereAnyImpediment,
+    required this.id,
+  });
 
   @override
   String toString() {
